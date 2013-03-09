@@ -26,8 +26,6 @@ ig.module(
 			# Add the animations
 			@addAnim 'move', 0.05, [1,2] 
 
-			@timer = new ig.Timer(0.5)
-
 			@currentAnim.flip.x = yes
 
 			@t1 = 0
@@ -49,20 +47,5 @@ ig.module(
 				if @t2 is 15
 					@up = yes
 					@t2 = 0
-
-
-
-			# if @timer.delta() >= 1
-			# 	@timer.reset()
-			# 	@body.SetXForm(new b2.Vec2(@body.GetPosition().x, 0), 0)
-			# else if @timer.delta() > 0.5 and @timer.delta() < 1
-			# 	# @currentAnim.flip.x = no
-			# 	console.log 'up', @body.GetPosition().x, @body.GetPosition().y
-			# 	@body.SetXForm(new b2.Vec2(@body.GetPosition().x, @body.GetPosition().y - 1), 1)
-			# 	# @body.ApplyImpulse new b2.Vec2(0, -1), @body.GetPosition()
-			# else
-			# 	console.log 'down', @body.GetPosition().x, @body.GetPosition().y
-			# 	# @body.ApplyImpulse new b2.Vec2(0, 1), @body.GetPosition()
-
 
 	return
