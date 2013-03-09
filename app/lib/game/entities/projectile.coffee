@@ -29,7 +29,7 @@ ig.module(
     collideTile: ->
       @soundManager.add()
 
-  ProjectileSound = class extends AudioletGroup
+  class ProjectileSound extends AudioletGroup
 
     constructor: (audiolet, frequency) ->
       super audiolet, 0, 1
@@ -40,20 +40,16 @@ ig.module(
       
       # create envelope
       @gainEnv = new PercussiveEnvelope(audiolet, 0, 0.1, 0.15, => @remove())
-      @gainEnvMulAdd = new MulAdd(audiolet, 0)
-
-      # connect envelope
-      @gainEnv.connect(@gainEnvMulAdd)
-      @gainEnvMulAdd.connect(@gain, 0, 1)
+      @gainEnv.connect(@gain, 0, 1)
 
       # route core audio
       @sine.connect(@gain)
       @gain.connect(@outputs[0])
 
-  ProjectileSoundManager = class
+  class ProjectileSoundManager
 
     constructor: ->
-      @audiolet = new Audiolet
+      @audiolet = window.audiolet
       @scale = new MajorScale()
       @index = 16
 

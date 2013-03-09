@@ -12,6 +12,8 @@ ig.module("game.main").requires(
 	"game.levels.blake",
 	"plugins.box2d.game"
 ).defines ->
+
+	window.audiolet = new Audiolet
 	
 	MyGame = ig.Box2DGame.extend(
 		gravity: 500 # All entities are affected by this
