@@ -151,7 +151,7 @@ ig.Box2DGame.inject({
 
   // remove impact's collision detection
   // for performance
-  checkEntities: function () {},
+  //checkEntities: function () {},
 
   loadLevel: function (data) {
     this.parent(data);
