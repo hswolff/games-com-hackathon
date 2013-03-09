@@ -4,6 +4,7 @@ ig.module("game.main").requires(
 	"game.entities.player",
 	"game.entities.enemy",
 	"game.entities.crate",
+	"game.entities.collectible",
 	"game.levels.test",
 	"game.levels.one",
 	"game.levels.two",
