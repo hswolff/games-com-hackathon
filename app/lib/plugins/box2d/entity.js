@@ -66,5 +66,19 @@ ig.Box2DEntity = ig.Entity.extend({
 		this.parent();
 	}
 });
+
+// collision plugin adds collideTile and collideWith
+// https://github.com/quidmonkey/Box2D-Collision-Plugin/blob/master/collision_v2.js
+// http://impactjs.com/forums/code/box2d-collision-plugin
+ig.Box2DEntity.inject({
+
+  init: function (x, y, settings) {
+    this.parent(x, y, settings);
+    if (!ig.global.wm) {
+      this.body.entity = this;
+    }
+  }
+
+});
 	
 });

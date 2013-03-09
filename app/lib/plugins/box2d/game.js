@@ -143,6 +143,62 @@ ig.Box2DGame = ig.Game.extend({
 	
 	
 });
+
+// collision plugin adds collideTile and collideWith
+// https://github.com/quidmonkey/Box2D-Collision-Plugin/blob/master/collision_v2.js
+// http://impactjs.com/forums/code/box2d-collision-plugin
+ig.Box2DGame.inject({
+
+  // remove impact's collision detection
+  // for performance
+  checkEntities: function () {},
+
+  loadLevel: function (data) {
+    this.parent(data);
+
+    // create impact collision listener
+    var listener = new b2.ContactListener();
+    listener.Add = function(point){
+      var a = point.shape1.GetBody().entity,
+        b = point.shape2.GetBody().entity;
+
+      //is this a tile collision?
+			if (!a || !b)
+			{            
+			    if(a) { if(a.collideTile) { a.collideTile(); } } //jpe - fix this? i.e. pass res object? http://impactjs.com/documentation/class-reference/collisionmap#trace
+			    if(b) { if(b.collideTile) { b.collideTile(); } }
+			}
+
+			// is this an entity collision?
+			else {
+
+	      // preserve impact's entity checks even
+	      // though these are unnecessary
+	      if (a.checkAgainst & b.type) {
+	        a.check(b);
+	      }
+	      
+	      if (b.checkAgainst & a.type) {
+	        b.check(a);
+	      }
+
+	      // call impact
+	      if (point.normal.y) {
+	        a.collideWith(b, 'y');
+	        b.collideWith(a, 'y');
+	      }
+	      else {
+	        a.collideWith(b, 'x');
+	        b.collideWith(a, 'x');
+	      }
+	    }
+    };
+
+    // attach to box2d world
+    ig.world.SetContactListener(listener);
+  }
+
+});
 	
 });
 
