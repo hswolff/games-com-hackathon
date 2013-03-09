@@ -20,11 +20,11 @@ ig.module(
       @parent x, y, settings
       @addAnim "idle", 1, [0]
       @currentAnim.flip.x = settings.flip
+      @soundManager = new ProjectileSoundManager
       return
 
     collideTile: ->
-      projectileSoundManager.add()
-
+      @soundManager.add()
 
   ProjectileSound = class extends AudioletGroup
 
@@ -32,7 +32,7 @@ ig.module(
       super audiolet, 0, 1
 
       # create core audio
-      @sine = new Sine(audiolet, frequency)
+      @sine = new Triangle(audiolet, frequency)
       @gain = new Gain(audiolet)
       
       # create envelope
@@ -52,18 +52,14 @@ ig.module(
     constructor: ->
       @audiolet = new Audiolet
       @scale = new MajorScale()
-      @index = 9
+      @index = 16
 
     add: _.throttle(->
       degree = @index--
-      freq = @scale.getFrequency(degree, 16.352, 4)
+      freq = @scale.getFrequency(degree, 3, 4)
       sound = new ProjectileSound(@audiolet, freq)
       sound.connect(@audiolet.output)
-      @index = 9 if not @index
+      @index = 16 if not @index
     , 200)
-
-  projectileSoundManager = new ProjectileSoundManager
-
-
   
   return
