@@ -15,9 +15,9 @@ ig.module(
 			y: 2
 
 		type: ig.Entity.TYPE.B
-		checkAgainst: ig.Entity.TYPE.A
+		# checkAgainst: ig.Entity.TYPE.A
 		collides: ig.Entity.COLLIDES.NEVER # Collision is already handled by Box2D!
-
+		static: true
 		animSheet: new ig.AnimationSheet("media/enemy.png", 16, 24)
 
 		init: (x, y, settings) ->
@@ -30,20 +30,39 @@ ig.module(
 
 			@currentAnim.flip.x = yes
 
-		check: (other) ->
-			console.log 'yes'
-
+			@t1 = 0
+			@t2 = 0
+			@up = no
 
 		update: ->
 			@parent()
 
-			if @timer.delta() >= 1
-				@timer.reset()
-			else if @timer.delta() > 0.5 and @timer.delta() < 1
-				# @currentAnim.flip.x = no
-				@body.ApplyImpulse new b2.Vec2(0, -1), @body.GetPosition()
+			if @up
+				@t1 += 1
+				@body.SetXForm(new b2.Vec2(@body.GetPosition().x, @body.GetPosition().y + 0.2), 0)
+				if @t1 is 15
+					@up = no
+					@t1 = 0
 			else
-				@body.ApplyImpulse new b2.Vec2(0, 1), @body.GetPosition()
+				@t2 += 1
+				@body.SetXForm(new b2.Vec2(@body.GetPosition().x, @body.GetPosition().y - 0.2), 0)
+				if @t2 is 15
+					@up = yes
+					@t2 = 0
+
+
+
+			# if @timer.delta() >= 1
+			# 	@timer.reset()
+			# 	@body.SetXForm(new b2.Vec2(@body.GetPosition().x, 0), 0)
+			# else if @timer.delta() > 0.5 and @timer.delta() < 1
+			# 	# @currentAnim.flip.x = no
+			# 	console.log 'up', @body.GetPosition().x, @body.GetPosition().y
+			# 	@body.SetXForm(new b2.Vec2(@body.GetPosition().x, @body.GetPosition().y - 1), 1)
+			# 	# @body.ApplyImpulse new b2.Vec2(0, -1), @body.GetPosition()
+			# else
+			# 	console.log 'down', @body.GetPosition().x, @body.GetPosition().y
+			# 	# @body.ApplyImpulse new b2.Vec2(0, 1), @body.GetPosition()
 
 
 	return
