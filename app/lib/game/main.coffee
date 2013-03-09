@@ -9,6 +9,38 @@ ig.module("game.main").requires(
 	"game.levels.two",
 	"plugins.box2d.game"
 ).defines ->
+
+	window.Bloop = class extends AudioletGroup
+
+    constructor: (audiolet) ->
+      super audiolet, 0, 1
+
+      # create core audio
+      @sine = new Sine(audiolet, 240)
+      @gain = new Gain(audiolet)
+      
+      # create envelope
+      @gainEnv = new PercussiveEnvelope(audiolet, 0, 0.1, 0.15)
+      @gainEnvMulAdd = new MulAdd(audiolet, 0)
+
+      # connect envelope
+      @gainEnv.connect(@gainEnvMulAdd)
+      @gainEnvMulAdd.connect(@gain, 0, 1)
+
+      # interface
+      @trigger = new TriggerControl(audiolet)
+      @trigger.connect(@gainEnv)
+
+      # route core audio
+      @sine.connect(@gain)
+      @gain.connect(@outputs[0])
+
+  # audio things
+  audiolet = new Audiolet
+  bloop = new Bloop(audiolet)
+  bloop.connect(audiolet.output)
+  window.bloop = bloop
+	
 	MyGame = ig.Box2DGame.extend(
 		gravity: 100 # All entities are affected by this
 

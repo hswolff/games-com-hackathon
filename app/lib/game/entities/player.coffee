@@ -86,6 +86,6 @@ ig.module(
 			return
 
 		collideTile: ->
-			console.log 'projectile hit wall'
+			window.bloop.trigger.trigger.setValue(1)
 
 	return
