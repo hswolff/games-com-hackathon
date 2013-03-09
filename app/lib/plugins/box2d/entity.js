@@ -37,10 +37,14 @@ ig.Box2DEntity = ig.Entity.extend({
 		);
 		
 		shapeDef.density = 1;
-		//shapeDef.restitution = 0.0;
+		if(this.restitution){
+			shapeDef.restitution = this.restitution;
+		}
 		//shapeDef.friction = 0.9;
 		this.body.CreateShape(shapeDef);
-		this.body.SetMassFromShapes();
+		if(!this.static) {
+			this.body.SetMassFromShapes();
+		}
 	},
 	
 	update: function() {		
