@@ -6,11 +6,11 @@ ig.module(
 
   ProjectileSound = class extends AudioletGroup
 
-    constructor: (audiolet) ->
+    constructor: (audiolet, frequency) ->
       super audiolet, 0, 1
 
       # create core audio
-      @sine = new Sine(audiolet, 100)
+      @sine = new Sine(audiolet, frequency)
       @gain = new Gain(audiolet)
       
       # create envelope
@@ -25,8 +25,23 @@ ig.module(
       @sine.connect(@gain)
       @gain.connect(@outputs[0])
 
-  # audio things
-  audiolet = new Audiolet
+  ProjectileSoundManager = class
+
+    constructor: ->
+      @audiolet = new Audiolet
+      @scale = new MajorScale()
+      @index = 9
+
+    add: _.throttle(->
+      degree = @index--
+      freq = @scale.getFrequency(degree, 16.352, 4)
+      sound = new ProjectileSound(@audiolet, freq)
+      sound.connect(@audiolet.output)
+      @index = 9 if not @index
+    , 200)
+
+  projectileSoundManager = new ProjectileSoundManager
+
 
   window.EntityProjectile = ig.Box2DEntity.extend
     size:
@@ -47,7 +62,6 @@ ig.module(
       return
 
     collideTile: ->
-      sound = new ProjectileSound(audiolet)
-      sound.connect(audiolet.output)
+      projectileSoundManager.add()
 
   return
