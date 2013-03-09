@@ -15,7 +15,6 @@ ig.module(
 			y: 2
 
 		type: ig.Entity.TYPE.B
-		# checkAgainst: ig.Entity.TYPE.A
 		collides: ig.Entity.COLLIDES.NEVER # Collision is already handled by Box2D!
 		static: true
 		animSheet: new ig.AnimationSheet("media/enemy.png", 16, 24)

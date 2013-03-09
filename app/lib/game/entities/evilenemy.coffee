@@ -27,12 +27,7 @@ ig.module(
 
 			@currentAnim.flip.x = yes
 
-			@t1 = 0
-			@t2 = 0
-			@up = no
-
-		update: ->
-			@parent()
+		update: -> @parent()
 
 		collideWith: (entity) -> entity.kill()
 
