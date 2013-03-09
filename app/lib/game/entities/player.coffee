@@ -5,7 +5,7 @@ ig.module(
 	"plugins.box2d.entity"
 ).defines ->
 
-	window.EntityPlayer = ig.Box2DEntity.extend
+	window.EntityPlayer = ig.Entity.extend
 		size:
 			x: 8
 			y: 14
@@ -20,43 +20,49 @@ ig.module(
 
 		animSheet: new ig.AnimationSheet("media/player.png", 16, 24)
 		flip: false
+		gravityFactor: 0
 
 		init: (x, y, settings) ->
 			@parent x, y, settings
 
 			# Add the animations
 			@addAnim "idle", 1, [0]
-			@addAnim "jump", 0.07, [1, 2]
+
+			# @body.DestroyShape @body.GetShapeList()
 
 		update: ->
 
 			# move left or right
 			if ig.input.state("left")
-				@body.ApplyForce new b2.Vec2(-20, 0), @body.GetPosition()
-				@flip = true
+				# @body.ApplyForce new b2.Vec2(-20, 0), @body.GetPosition()
+			    this.currentAnim.angle -= Math.PI/5 * ig.system.tick;
 			else if ig.input.state("right")
-				@body.ApplyForce new b2.Vec2(20, 0), @body.GetPosition()
-				@flip = false
+				# @body.ApplyForce new b2.Vec2(20, 0), @body.GetPosition()
+			    this.currentAnim.angle += Math.PI/5 * ig.system.tick;
 
-			# jetpack
-			if ig.input.state("jump")
-				@body.ApplyForce new b2.Vec2(0, -30), @body.GetPosition()
-				@currentAnim = @anims.jump
-			else
-				@currentAnim = @anims.idle
+			# @body.SetXForm @body.GetPosition(), this.angle
+
+			# window.body = @body
 
 			# shoot
 			if ig.input.pressed("shoot")
-				x = @pos.x + ((if @flip then -6 else 6))
-				y = @pos.y + 6
-				ig.game.spawnEntity EntityProjectile, x, y,
-					flip: @flip
+				x = @pos.x
+				y = @pos.y
 
-			@currentAnim.flip.x = @flip
+				velocity = 10
+				projectile = ig.game.spawnEntity EntityProjectile, x, y,
+					flip: @flip
+				impulse = new b2.Vec2(Math.cos(@currentAnim.angle), Math.sin(@currentAnim.angle))
+				# impulse = new b2.Vec2(-10,-10)
+				window.i = impulse
+				impulse.Normalize()
+				impulse.Multiply(10)
+				console.log impulse
+				projectile.body.ApplyImpulse impulse, projectile.body.GetPosition()
+				console.log projectile
 
 			# This sets the position and angle. We use the position the object
 			# currently has, but always set the angle to 0 so it does not rotate
-			@body.SetXForm @body.GetPosition(), 0
 
 			# move!
 			@parent()
@@ -69,6 +75,7 @@ ig.module(
 		type: ig.Entity.TYPE.A
 		checkAgainst: ig.Entity.TYPE.B
 		collides: ig.Entity.COLLIDES.NEVER # Collision is already handled by Box2D!
+		restitution: 0.8
 
 		animSheet: new ig.AnimationSheet("media/projectile.png", 8, 4)
 
@@ -76,8 +83,6 @@ ig.module(
 			@parent x, y, settings
 			@addAnim "idle", 1, [0]
 			@currentAnim.flip.x = settings.flip
-			velocity = ((if settings.flip then -10 else 10))
-			@body.ApplyImpulse new b2.Vec2(velocity, 0), @body.GetPosition()
 			return
 
 		collideTile: ->

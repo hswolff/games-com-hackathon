@@ -1,6 +1,6 @@
 ig.module("game.main").requires(
 	"impact.game",
-	"impact.font",
+    'impact.debug.debug',
 	"game.entities.player",
 	"game.entities.enemy",
 	"game.entities.crate",
