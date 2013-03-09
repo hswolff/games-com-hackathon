@@ -66,7 +66,7 @@ ig.module(
 			x: 8
 			y: 4
 
-		type: ig.Entity.TYPE.NONE
+		type: ig.Entity.TYPE.A
 		checkAgainst: ig.Entity.TYPE.B
 		collides: ig.Entity.COLLIDES.NEVER # Collision is already handled by Box2D!
 
