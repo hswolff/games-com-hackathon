@@ -2,6 +2,7 @@ ig.module("game.main").requires(
 	"impact.game",
 	"impact.font",
 	"game.entities.player",
+	"game.entities.enemy",
 	"game.entities.crate",
 	"game.levels.test",
 	"game.levels.one",
@@ -10,7 +11,7 @@ ig.module("game.main").requires(
 ).defines ->
 	MyGame = ig.Box2DGame.extend(
 		gravity: 100 # All entities are affected by this
-		
+
 		# Load a font
 		font: new ig.Font("media/04b03.font.png")
 		clearColor: "#1b2026"
