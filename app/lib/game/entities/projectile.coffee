@@ -4,6 +4,30 @@ ig.module(
   "plugins.box2d.entity"
 ).defines ->
 
+  ProjectileSound = class extends AudioletGroup
+
+    constructor: (audiolet) ->
+      super audiolet, 0, 1
+
+      # create core audio
+      @sine = new Sine(audiolet, 100)
+      @gain = new Gain(audiolet)
+      
+      # create envelope
+      @gainEnv = new PercussiveEnvelope(audiolet, 0, 0.1, 0.15, => @remove())
+      @gainEnvMulAdd = new MulAdd(audiolet, 0)
+
+      # connect envelope
+      @gainEnv.connect(@gainEnvMulAdd)
+      @gainEnvMulAdd.connect(@gain, 0, 1)
+
+      # route core audio
+      @sine.connect(@gain)
+      @gain.connect(@outputs[0])
+
+  # audio things
+  audiolet = new Audiolet
+
   window.EntityProjectile = ig.Box2DEntity.extend
     size:
       x: 8
@@ -23,6 +47,7 @@ ig.module(
       return
 
     collideTile: ->
-      window.bloop.trigger.trigger.setValue(1)
+      sound = new ProjectileSound(audiolet)
+      sound.connect(audiolet.output)
 
   return
