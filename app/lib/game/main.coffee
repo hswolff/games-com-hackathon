@@ -4,6 +4,7 @@ ig.module("game.main").requires(
 	"game.entities.player",
 	"game.entities.crate",
 	"game.levels.test",
+	"game.levels.one",
 	"plugins.box2d.game"
 ).defines ->
 	MyGame = ig.Box2DGame.extend(
@@ -26,7 +27,8 @@ ig.module("game.main").requires(
 				ig.input.bindTouch "#buttonJump", "jump"
 			
 			# Load the LevelTest as required above ('game.level.test')
-			@loadLevel LevelTest
+			# @loadLevel LevelTest
+			@loadLevel LevelOne
 
 		loadLevel: (data) ->
 			@parent data
@@ -42,10 +44,10 @@ ig.module("game.main").requires(
 			@parent()
 			
 			# screen follows the player
-			player = @getEntitiesByType(EntityPlayer)[0]
-			if player
-				@screen.x = player.pos.x - ig.system.width / 2
-				@screen.y = player.pos.y - ig.system.height / 2
+			# player = @getEntitiesByType(EntityPlayer)[0]
+			# if player
+			# 	@screen.x = player.pos.x - ig.system.width / 2
+			# 	@screen.y = player.pos.y - ig.system.height / 2
 
 		draw: ->
 			
@@ -83,4 +85,4 @@ ig.module("game.main").requires(
 	#~ 80 480  80 // div 320/1.5 = 213
 	#~ 160 640 160 // div 320/2 = 160
 	else
-		ig.main "#canvas", MyGame, 60, 320, 240, 3
+		ig.main "#canvas", MyGame, 60, 240, 160, 3
