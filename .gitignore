@@ -1,0 +1,30 @@
+#mac crap
+.DS_Store
+node_modules
+
+#sublime crap
+*.sublime-workspace
+
+#sass crap
+.sass-cache
+app/css
+
+#coffee crap - note anything in js/vendor needs to be added manually
+app/lib/game/*.js
+app/lib/game/**/*.js
+!app/lib/game/levels/*.js
+
+app/lib/impact/
+app/lib/weltmeister/
+app/tools/
+app/weltmeister.html
+
+app/media/04b03.font.png
+app/media/crate.png
+app/media/iphone-buttons.png
+app/media/player.png
+app/media/projectile.png
+app/media/tiles.png
+
+#ruby crap
+Gemfile.lock%
