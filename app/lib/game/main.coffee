@@ -5,6 +5,7 @@ ig.module("game.main").requires(
 	"game.entities.crate",
 	"game.levels.test",
 	"game.levels.one",
+	"game.levels.two",
 	"plugins.box2d.game"
 ).defines ->
 	MyGame = ig.Box2DGame.extend(
