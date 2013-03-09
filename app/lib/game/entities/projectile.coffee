@@ -7,14 +7,17 @@ ig.module(
   window.EntityProjectile = ig.Box2DEntity.extend
     size:
       x: 8
-      y: 4
+      y: 8
 
     type: ig.Entity.TYPE.A
     checkAgainst: ig.Entity.TYPE.B
     collides: ig.Entity.COLLIDES.NEVER # Collision is already handled by Box2D!
     restitution: 0.8
 
-    animSheet: new ig.AnimationSheet("media/projectile.png", 8, 4)
+    animSheet: new ig.AnimationSheet("img/muffin.png", 64, 64)
+    offset:
+      x: 32
+      y: 32
 
     init: (x, y, settings) ->
       @parent x, y, settings

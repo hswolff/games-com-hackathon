@@ -1,6 +1,6 @@
 ig.module("game.main").requires(
 	"impact.game",
-    'impact.debug.debug',
+  'impact.debug.debug',
 	"game.entities.player",
 	"game.entities.enemy",
 	"game.entities.crate",
@@ -9,11 +9,12 @@ ig.module("game.main").requires(
 	"game.levels.one",
 	"game.levels.two",
 	"game.levels.three",
+	"game.levels.blake",
 	"plugins.box2d.game"
 ).defines ->
 	
 	MyGame = ig.Box2DGame.extend(
-		gravity: 100 # All entities are affected by this
+		gravity: 500 # All entities are affected by this
 
 		# Load a font
 		font: new ig.Font("media/04b03.font.png")
@@ -33,7 +34,7 @@ ig.module("game.main").requires(
 			
 			# Load the LevelTest as required above ('game.level.test')
 			# @loadLevel LevelTest
-			@loadLevel LevelOne
+			@loadLevel LevelBlake
 
 		loadLevel: (data) ->
 			@parent data
@@ -101,4 +102,4 @@ ig.module("game.main").requires(
 	#~ 80 480  80 // div 320/1.5 = 213
 	#~ 160 640 160 // div 320/2 = 160
 	else
-		ig.main "#canvas", StartScreen, 60, 240, 160, 3
+		ig.main "#canvas", StartScreen, 60, 800, 640

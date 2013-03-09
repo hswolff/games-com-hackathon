@@ -18,7 +18,10 @@ ig.module(
 		checkAgainst: ig.Entity.TYPE.NONE
 		collides: ig.Entity.COLLIDES.NEVER # Collision is already handled by Box2D!
 
-		animSheet: new ig.AnimationSheet("media/player.png", 16, 24)
+		animSheet: new ig.AnimationSheet("img/cannon.png", 128, 128)
+		offset:
+			x: 64
+			y: 64
 		flip: false
 		gravityFactor: 0
 
@@ -49,14 +52,14 @@ ig.module(
 				x = @pos.x
 				y = @pos.y
 
-				velocity = 10
+				velocity = 100
 				projectile = ig.game.spawnEntity EntityProjectile, x, y,
 					flip: @flip
 				impulse = new b2.Vec2(Math.cos(@currentAnim.angle), Math.sin(@currentAnim.angle))
 				# impulse = new b2.Vec2(-10,-10)
 				window.i = impulse
 				impulse.Normalize()
-				impulse.Multiply(10)
+				impulse.Multiply(velocity)
 				console.log impulse
 				projectile.body.ApplyImpulse impulse, projectile.body.GetPosition()
 				console.log projectile
