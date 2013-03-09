@@ -3,7 +3,7 @@
 node_modules
 
 #sublime crap
-*.sublime-workspace
+*.sublime-*
 
 #sass crap
 .sass-cache
