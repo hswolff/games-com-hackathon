@@ -55,11 +55,11 @@ ig.module(
       @index = 16
 
     add: _.throttle(->
+      return if not @index
       degree = @index--
-      freq = @scale.getFrequency(degree, 3, 4)
+      freq = @scale.getFrequency(degree, 2, 4)
       sound = new ProjectileSound(@audiolet, freq)
       sound.connect(@audiolet.output)
-      @index = 16 if not @index
     , 200)
   
   return
