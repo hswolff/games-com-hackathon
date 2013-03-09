@@ -80,4 +80,7 @@ ig.module(
 			@body.ApplyImpulse new b2.Vec2(velocity, 0), @body.GetPosition()
 			return
 
+		collideTile: ->
+			console.log 'projectile hit wall'
+
 	return
