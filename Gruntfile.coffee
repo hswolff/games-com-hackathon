@@ -134,7 +134,7 @@ module.exports = (grunt) ->
       'compass:server',
       'express-server',
       'livereload-start',
-      'open',
+      # 'open',
       'watch' 
     ]
 
