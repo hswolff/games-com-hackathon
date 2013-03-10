@@ -36,6 +36,8 @@ ig.module("game.main").requires(
 				ig.input.bindTouch "#buttonShoot", "shoot"
 				ig.input.bindTouch "#buttonJump", "jump"
 
+			b2.SCALE = 0.025
+			
 			@setBackground()
 			@loadLevel LevelOne
 

@@ -6,8 +6,8 @@ ig.module(
 
   window.EntityProjectile = ig.Box2DEntity.extend
     size:
-      x: 8
-      y: 8
+      x: 64
+      y: 64
 
     type: ig.Entity.TYPE.A
     checkAgainst: ig.Entity.TYPE.B
@@ -15,9 +15,6 @@ ig.module(
     restitution: 0.8
 
     animSheet: new ig.AnimationSheet("img/muffin.png", 64, 64)
-    offset:
-      x: 32
-      y: 32
 
     init: (x, y, settings) ->
       @parent x, y, settings

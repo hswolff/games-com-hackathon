@@ -15,9 +15,6 @@ ig.module(
 		collides: ig.Entity.COLLIDES.NEVER # Collision is already handled by Box2D!
 
 		animSheet: new ig.AnimationSheet("img/cannon.png", 128, 128)
-		offset:
-			x: 64
-			y: 64
 		flip: false
 		gravityFactor: 0
 
@@ -31,6 +28,8 @@ ig.module(
 
 			# Add the animations
 			@addAnim "idle", 1, [0]
+			@anims.idle.pivot.y = 86
+
 
 		update: ->
 
