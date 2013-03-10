@@ -18,7 +18,7 @@ ig.module("game.main").requires(
 		gravity: 500 # All entities are affected by this
 
 		# Load a font
-		font: new ig.Font("img/comic-sans-font.png")
+		font: new ig.Font("img/hud-font.png")
 		clearColor: "#1b2026"
 		init: ->
 			
@@ -69,9 +69,9 @@ ig.module("game.main").requires(
 			leftAlignedX = 30
 			this.statText.draw('Total Score: '+this.stats.totalPoints, ig.system.width-30, y, ig.Font.ALIGN.RIGHT)
 			this.statText.draw('Sprinkles Collected: '+this.stats.sprinklesCollected, leftAlignedX, y, ig.Font.ALIGN.LEFT)
-			this.statText.draw('Attempts: '+this.stats.attempts, leftAlignedX, y+60, ig.Font.ALIGN.LEFT)
+			this.statText.draw('Attempts: '+this.stats.attempts, leftAlignedX, y+40, ig.Font.ALIGN.LEFT)
 
-		statText: new ig.Font( 'img/comic-sans-font.png' )
+		statText: new ig.Font( 'img/hud-font.png' )
 		levelTimer: new ig.Timer()
 		stats:
 			totalPoints: 0
