@@ -35,6 +35,7 @@ ig.module(
       baskets = ig.game.getEntitiesByType(EntityBasket)
       for basket in baskets
         if @touches(basket)
+          basket.currentAnim = basket.anims.close.rewind()
           ig.game.stats.baskets++
 
       @parent()

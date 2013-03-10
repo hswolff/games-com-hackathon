@@ -153,8 +153,9 @@ ig.module("game.main").requires(
 					basketFontY = levelFontY + @font.height + 20
 					@font.draw("Baskets", centerX, basketFontY, ig.Font.ALIGN.CENTER)
 					basketSpriteY = basketFontY + @font.height/1.5
+					basketSpriteWidth = 128
 					for i in [1..@stats.baskets]
-						@basketSprite.draw ((@basketSprite.width + 2) * i) + 80, basketSpriteY
+						@basketSprite.drawTile ((basketSpriteWidth + 2) * i) + 80, basketSpriteY, 3, 128
 
 					blueberryFontY = basketSpriteY + @basketSprite.height + 20
 					@font.draw("Blueberries", centerX, blueberryFontY, ig.Font.ALIGN.CENTER)

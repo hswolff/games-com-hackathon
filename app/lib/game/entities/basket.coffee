@@ -16,6 +16,7 @@ ig.module(
 
 		init: (x, y, settings) ->
 			@addAnim 'idle', 1, [0]
+			@addAnim 'close', 0.1, [0,1,2,3,2,1,0], true
 			@parent x, y, settings
 			
 
