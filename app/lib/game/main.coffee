@@ -74,18 +74,23 @@ ig.module("game.main").requires(
 				ig.game.loadLevelDeferred ig.global["Level#{@currentLevel}"] 
 			@parent()
 
-		draw: ->
-			# Draw all entities and BackgroundMaps
-			@bg?.draw(0,0)
-			@parent()
-
+		drawStats: ->
 			x = ig.system.width/2
 			y = 20
 			leftAlignedX = 30
 			this.statText.draw('Total Score: '+this.stats.score, ig.system.width-30, y, ig.Font.ALIGN.RIGHT)
-			this.statText.draw('Toppings Collected: '+this.stats.blueberriesCollected, leftAlignedX, y, ig.Font.ALIGN.LEFT)
+			this.statText.draw('Level  ' + this.currentLevel, leftAlignedX, y, ig.Font.ALIGN.LEFT)
+			this.statText.draw('Toppings Collected: '+this.stats.blueberriesCollected, leftAlignedX, y+=40, ig.Font.ALIGN.LEFT)
 			this.statText.draw('Attempts: '+this.stats.attempts, leftAlignedX, y+=40, ig.Font.ALIGN.LEFT)
 			this.statText.draw "Baskets: #{@stats.baskets}/#{@stats.totalAttempts}", leftAlignedX, y+=40, ig.Font.ALIGN.LEFT
+
+		draw: ->
+			# Draw all entities and BackgroundMaps
+			@bg?.draw(0,0)
+			@parent()
+			@drawStats()
+
+			
 
 		statText: new ig.Font( 'img/hud-font.png' )
 		levelTimer: new ig.Timer()
