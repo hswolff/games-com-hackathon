@@ -7,8 +7,8 @@ ig.module(
 
 	window.EntityEvilenemy = ig.Box2DEntity.extend
 		size:
-			x: 8
-			y: 14
+			x: 64
+			y: 64
 
 		offset:
 			x: 4
@@ -17,13 +17,13 @@ ig.module(
 		type: ig.Entity.TYPE.B
 		collides: ig.Entity.COLLIDES.NEVER # Collision is already handled by Box2D!
 		static: true
-		animSheet: new ig.AnimationSheet("media/evil-enemy.png", 16, 24)
+		animSheet: new ig.AnimationSheet("img/mouth.png", 64, 64)
 
 		init: (x, y, settings) ->
 			@parent x, y, settings
 
 			# Add the animations
-			@addAnim 'move', 0.05, [1,2] 
+			@addAnim 'move', 0.1, [0,1,2] 
 
 			@currentAnim.flip.x = yes
 
