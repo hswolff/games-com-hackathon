@@ -25,22 +25,26 @@ ig.module(
       return
 
     update: ->
-      if @body.IsSleeping()
-        baskets = ig.game.getEntitiesByType(EntityBasket)
-        for basket in baskets
-          if @touches(basket)
-            ig.game.stats.baskets++
+      return @kill() if @body.IsSleeping()
+      @parent()
 
-        @kill() 
-
-        muffins = ig.game.getEntitiesByType(EntityProjectile)
-        if muffins.length is 0 and ig.game.stats.attempts is 0
-          ig.game.trigger('finishLevel', ig.game.stats)
+    kill: ->
+      console.log 'kill'
+      baskets = ig.game.getEntitiesByType(EntityBasket)
+      for basket in baskets
+        if @touches(basket)
+          ig.game.stats.baskets++
 
       @parent()
 
+      muffins = ig.game.getEntitiesByType(EntityProjectile)
+      if muffins.length is 0 and ig.game.stats.attempts is 0
+        ig.game.trigger('finishLevel', ig.game.stats)
+
+
     collideTile: ->
       @soundManager.add()
+
 
   class ProjectileSound extends AudioletGroup
 
