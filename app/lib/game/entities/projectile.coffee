@@ -12,7 +12,7 @@ ig.module(
     type: ig.Entity.TYPE.A
     checkAgainst: ig.Entity.TYPE.B
     collides: ig.Entity.COLLIDES.NEVER # Collision is already handled by Box2D!
-    restitution: 0.8
+    restitution: 0.5
 
     animSheet: new ig.AnimationSheet("img/muffin.png", 64, 64)
 
