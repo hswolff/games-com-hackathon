@@ -4,10 +4,6 @@ ig.module(
 	"impact.entity"
 ).defines ->
 	window.EntityExit = ig.Entity.extend
-		_wmDrawBox: yes
-
-		_wmBoxColor: 'rgba(0, 0, 255, 0.7)'
-
 		type: ig.Entity.TYPE.A
 		animSheet: new ig.AnimationSheet("img/basket.png", 128, 128)
 		size: 
@@ -18,7 +14,9 @@ ig.module(
 
 		checkAgainst: ig.Entity.TYPE.A 
 
-		# update: ->
+		init: (x, y, settings) ->
+			@addAnim 'idle', 1, [0]
+			@parent x, y, settings
 
 		check: (other) ->
 			if other instanceof EntityProjectile and @level
