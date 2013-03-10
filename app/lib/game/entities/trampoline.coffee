@@ -7,13 +7,13 @@ ig.module(
 
 	window.EntityTrampoline = ig.Box2DEntity.extend
 		size:
-			x: 50
-			y: 50
+			x: 64
+			y: 64
 
 		type: ig.Entity.TYPE.B
 		collides: ig.Entity.COLLIDES.NEVER # Collision is already handled by Box2D!
 		static: true
-		animSheet: new ig.AnimationSheet("media/evil-enemy.png", 16, 24)
+		animSheet: new ig.AnimationSheet("img/bumper.png", 64, 64)
 
 		init: (x, y, settings) ->
 			@parent x, y, settings
