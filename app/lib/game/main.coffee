@@ -224,6 +224,13 @@ ig.module("game.main").requires(
 			silver: new ig.Image('img/medal-silver.png')
 			gold: new ig.Image('img/medal-gold.png')
 
+		points:
+			bronze: 100
+			silver: 250
+			gold: 500
+
+		scores: []
+
 		init: ->
 			ig.input.bind( ig.KEY.SPACE, 'start')
 			@setBackground()
@@ -233,8 +240,24 @@ ig.module("game.main").requires(
 			ig.music.volume = 0.5
 			ig.music.play()
 
+			score = _.reduce (_.map @getAllMedals(false), (m) => @points[m]), ((memo, num) -> memo + num), 0
+			@saveScore score
 
-		getMedal: (stats) ->
+			@getTopScores()
+
+		saveScore: (score) ->
+			GAMESAPI.postScore score, ->
+				console.log 'posted score', score
+
+		getTopScores: ->
+			GAMESAPI.getLeaders GAMESAPI.DATA.ALLTIME, (resp) =>
+				scores = resp.data?.scores
+				if scores?.length 
+					@scores = _.map _.first(scores, 3), (s) ->
+						name: if s.playerInfo.isMe then 'You' else s.playerInfo.displayName
+						score: s.score
+
+		getMedal: (stats, sprite = true) ->
 			total = stats.baskets + stats.blueberriesCollected
 			award = if total >= 6
 				'gold'
@@ -242,10 +265,14 @@ ig.module("game.main").requires(
 				'silver'
 			else 
 				'bronze'
-				
-			@medalSprites[award]
-		getAllMedals: ->
-			@getMedal(stat) for stat in window.levelStats
+
+			if sprite	
+				@medalSprites[award]
+			else 
+				award
+
+		getAllMedals: (sprite = true) ->
+			@getMedal(stat, sprite) for stat in window.levelStats
 
 		update: ->
 			if(ig.input.pressed('start'))
@@ -274,7 +301,16 @@ ig.module("game.main").requires(
 					x = 0
 					y += medal.height
 
-			@instructText.daw( 'Press Spacebar to Start Again', x, y+y/2, ig.Font.ALIGN.CENTER)
+			
+
+			y = 500
+			x = 400
+			@instructText.draw( 'Press Spacebar to Start Again', x, y+y/2, ig.Font.ALIGN.CENTER)
+			@instructText.draw( "Muffin Quest High Scores ", x, y, ig.Font.ALIGN.CENTER)
+			for score in @scores
+				y += 25
+				@instructText.draw( "#{score.name}    -      #{score.score}", x, y, ig.Font.ALIGN.CENTER)
+				
 
 	)
 
