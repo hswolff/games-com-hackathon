@@ -70,21 +70,25 @@ module.exports = (grunt) ->
 
     whichType = path.extname(changedFiles[0]).substr(1)
 
-    if whichType is 'coffee'
-      changedFiles.forEach (changed) ->
-        fileType = path.extname(changed).substr(1)
-        dirpath = path.dirname(changed).replace(fileType, replacements[fileType])
-        filename = path.basename(changed).replace(fileType, replacements[fileType])
+    try 
+      if whichType is 'coffee'
+        changedFiles.forEach (changed) ->
+          fileType = path.extname(changed).substr(1)
+          dirpath = path.dirname(changed).replace(fileType, replacements[fileType])
+          filename = path.basename(changed).replace(fileType, replacements[fileType])
 
-        filepath = dirpath + '/' + filename;\
-        contents = cs.compile(grunt.file.read(changed))
+          filepath = dirpath + '/' + filename;\
+          contents = cs.compile(grunt.file.read(changed))
 
-        grunt.file.write(filepath, contents)
+          grunt.file.write(filepath, contents)
 
-        grunt.log.writeln('File "' + filepath + '" created.')
-    else 
-      cb = this.async()
-      compile(['compile', changedFiles], cb)
+          grunt.log.writeln('File "' + filepath + '" created.')
+      else 
+        cb = this.async()
+        compile(['compile', changedFiles], cb)
+
+    catch e
+      console.log e
 
     #  taken from:
     #  https://github.com/gruntjs/grunt-contrib-compass/blob/master/tasks/compass.js#L15
