@@ -5,10 +5,9 @@ ig.module("game.main").requires(
 	"game.entities.enemy",
 	"game.entities.crate",
 	"game.entities.collectible",
-	"game.levels.one",
-	"game.levels.two",
-	"game.levels.three",
-	"game.levels.blake",
+	"game.levels.1",
+	"game.levels.2",
+	"game.levels.3",
 	"plugins.box2d.game"
 ).defines ->
 
@@ -32,6 +31,7 @@ ig.module("game.main").requires(
 			ig.input.bind ig.KEY.LEFT_ARROW, "left"
 			ig.input.bind ig.KEY.RIGHT_ARROW, "right"
 			ig.input.bind ig.KEY.SPACE, "shoot"
+			ig.input.bind ig.KEY.N, "nextlevel"
 			if ig.ua.mobile
 				ig.input.bindTouch "#buttonLeft", "left"
 				ig.input.bindTouch "#buttonRight", "right"
@@ -41,12 +41,16 @@ ig.module("game.main").requires(
 			b2.SCALE = 0.025
 			
 			@setBackground()
-			@loadLevel LevelOne
+			@loadLevel Level1
 
 			ig.game.on 'collect', ->
 				@stats.blueberriesCollected += 1
 
+			@currentLevel = 1
+
 		loadLevel: (data) ->
+			console.log data
+			@currentLevel = @currentLevel+1
 			@parent data
 
 			@stats.blueberriesCollected = 0
@@ -63,6 +67,8 @@ ig.module("game.main").requires(
 			@bg = new ig.Image('img/bg.png', 800, 640)
 
 		update: ->
+			if(ig.input.pressed('nextlevel'))
+				ig.game.loadLevelDeferred ig.global["Level#{@currentLevel}"] 
 			@parent()
 
 		draw: ->
