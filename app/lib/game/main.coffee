@@ -18,7 +18,7 @@ ig.module("game.main").requires(
 		gravity: 500 # All entities are affected by this
 
 		# Load a font
-		font: new ig.Font("media/04b03.font.png")
+		font: new ig.Font("img/comic-sans-font.png")
 		clearColor: "#1b2026"
 		init: ->
 			
@@ -61,15 +61,15 @@ ig.module("game.main").requires(
 			# Draw all entities and BackgroundMaps
 			@bg.draw(0,0)
 			@parent()
-			@font.draw "Arrow Keys, X, C", 2, 2  unless ig.ua.mobile
 
 			x = ig.system.width/2
 			y = 20
-			this.statText.draw('Total Score: '+this.stats.totalPoints, x, y, ig.Font.ALIGN.CENTER)
-			this.statText.draw('Sprinkles Collected: '+this.stats.sprinklesCollected, x, y+30, ig.Font.ALIGN.CENTER)
-			this.statText.draw('Attempts: '+this.stats.attempts, x, y+40, ig.Font.ALIGN.CENTER)
+			leftAlignedX = 30
+			this.statText.draw('Total Score: '+this.stats.totalPoints, ig.system.width-30, y, ig.Font.ALIGN.RIGHT)
+			this.statText.draw('Sprinkles Collected: '+this.stats.sprinklesCollected, leftAlignedX, y, ig.Font.ALIGN.LEFT)
+			this.statText.draw('Attempts: '+this.stats.attempts, leftAlignedX, y+60, ig.Font.ALIGN.LEFT)
 
-		statText: new ig.Font( 'media/04b03.font.png' )
+		statText: new ig.Font( 'img/comic-sans-font.png' )
 		levelTimer: new ig.Timer()
 		stats:
 			totalPoints: 0
@@ -84,16 +84,15 @@ ig.module("game.main").requires(
 		update: ->
 			if(ig.input.pressed('start'))
 				ig.system.setGame(MyGame)
-			this.parent()
+			@parent()
 		draw: ->
-			this.parent()
+			@parent()
 			x = ig.system.width/2
 			y = ig.system.height - 10
-			this.instructText.draw( 'Welcome', x-40, 10, ig.Font.ALIGN.CENTER)
-			this.instructText.draw( 'to', x-40, 40, ig.Font.ALIGN.CENTER)
-			this.instructText.draw( 'MUFFIN QUEST', x, 70, ig.Font.ALIGN.CENTER)
-			this.instructText.draw( 'Press Spacebar To Start', x+40, y,
-			ig.Font.ALIGN.CENTER)
+			@instructText.draw( 'Welcome', x-40, 10, ig.Font.ALIGN.CENTER)
+			@instructText.draw( 'to', x-40, 40, ig.Font.ALIGN.CENTER)
+			@instructText.draw( 'MUFFIN QUEST', x, 70, ig.Font.ALIGN.CENTER)
+			@instructText.draw( 'Press Spacebar To Start', x+40, y, ig.Font.ALIGN.CENTER)
 	)
 
 	if ig.ua.iPad
