@@ -51,8 +51,13 @@ ig.module("game.main").requires(
 			ig.game.on 'collect', -> @stats.blueberriesCollected += 1
 
 
-			ig.game.on 'finishLevel', (stats) -> @showStats = yes
+			ig.game.on 'finishLevel', @toggleStats
+				
 
+		toggleStats: (stats) ->
+			@showStats = yes
+			@continue = stats.baskets > 0
+							
 		loadLevel: (data) ->
 			@parent data
 
@@ -79,7 +84,7 @@ ig.module("game.main").requires(
 			if ig.input.pressed('restart')
 				@reloadLevel()
 				@showStats = false
-			else if @showStats and ig.input.state('nextlevel')
+			else if @showStats and @continue and ig.input.state('nextlevel')
 				@loadNextLevel()
 				@showStats = false
 				@parent()						
@@ -106,16 +111,18 @@ ig.module("game.main").requires(
 				x = ig.system.width/2
 				y = ig.system.height/2 - 20
 
-				@statText.draw('Level Complete', x, y, ig.Font.ALIGN.CENTER)
+				if @continue
+					@statText.draw('Level Complete', x, y, ig.Font.ALIGN.CENTER)
+					@statText.draw('Press N to continue.', x, ig.system.height - 80, ig.Font.ALIGN.CENTER)
+				else
+					@statText.draw('Level Failed', x, y, ig.Font.ALIGN.CENTER)
+
 				@statText.draw('Press R to retry.', x, ig.system.height - 120, ig.Font.ALIGN.CENTER)
-				@statText.draw('Press N to continue.', x, ig.system.height - 80, ig.Font.ALIGN.CENTER)
 			else
 				@bg?.draw(0,0)
 				@parent()
 				@drawStats()
-
 			
-
 		statText: new ig.Font( 'img/hud-font.png' )
 		levelTimer: new ig.Timer()
 	)
