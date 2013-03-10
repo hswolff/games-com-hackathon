@@ -31,6 +31,11 @@ ig.module("game.main").requires(
 
 		muffinSprite: new ig.Image('img/ui-muffin.png')
 
+		medalSprites:
+			bronze: new ig.Image('img/medal-bronze.png')
+			silver: new ig.Image('img/medal-silver.png')
+			gold: new ig.Image('img/medal-gold.png')
+
 		init: ->
 			@showStats = no
 			# Add support for simple events on the global ig.game obj.
@@ -108,6 +113,16 @@ ig.module("game.main").requires(
 			for i in [1..@stats.attempts]
 				@muffinSprite.draw ((@muffinSprite.width + 2) * i), 25
 
+		getMedal: ->
+			total = @stats.baskets + @stats.blueberriesCollected
+			award = if total >= 6
+				'gold'
+			else if 3 <= total < 6
+				'silver'
+			else 
+				'bronze'
+				
+			@medalSprites[award]
 
 		draw: ->
 			# Draw all entities and BackgroundMaps
@@ -118,12 +133,14 @@ ig.module("game.main").requires(
 				# ig.system.context.fillRect( 0, 0, ig.system.realWidth, ig.system.realHeight )
 
 				x = ig.system.width/2
-				y = 80
+				y = 175
 
 				if @continue
 					@statText.draw('Level Complete', x, y, ig.Font.ALIGN.CENTER)
 					@statText.draw("Baskets: #{@stats.baskets}/3 ", x, y + 50, ig.Font.ALIGN.CENTER)
 					@statText.draw("Blueberries: #{@stats.blueberriesCollected}/3 ", x, y + 80, ig.Font.ALIGN.CENTER)
+					@getMedal().draw 325, 50
+
 					@statText.draw('Press N to continue.', x, ig.system.height - 80, ig.Font.ALIGN.CENTER)
 				else
 					@statText.draw('Level Failed', x, y, ig.Font.ALIGN.CENTER)
