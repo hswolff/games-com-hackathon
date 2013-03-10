@@ -78,7 +78,7 @@ ig.module("game.main").requires(
 	)
 
 	StartScreen = ig.Game.extend(
-		instructText: new ig.Font( 'media/04b03.font.png' )
+		instructText: new ig.Font( 'img/herculanum-font.png' )
 		init: ->
 			ig.input.bind( ig.KEY.SPACE, 'start')
 		update: ->
@@ -88,11 +88,11 @@ ig.module("game.main").requires(
 		draw: ->
 			@parent()
 			x = ig.system.width/2
-			y = ig.system.height - 10
-			@instructText.draw( 'Welcome', x-40, 10, ig.Font.ALIGN.CENTER)
-			@instructText.draw( 'to', x-40, 40, ig.Font.ALIGN.CENTER)
-			@instructText.draw( 'MUFFIN QUEST', x, 70, ig.Font.ALIGN.CENTER)
-			@instructText.draw( 'Press Spacebar To Start', x+40, y, ig.Font.ALIGN.CENTER)
+			y = ig.system.height
+			@instructText.draw( 'Welcome', x-100, 30, ig.Font.ALIGN.CENTER)
+			@instructText.draw( 'to', x-50, 170, ig.Font.ALIGN.CENTER)
+			@instructText.draw( 'MUFFIN QUEST', x, ig.system.height/2, ig.Font.ALIGN.CENTER)
+			@instructText.draw( 'Press Spacebar To Start', x+40, y-60, ig.Font.ALIGN.CENTER)
 	)
 
 	if ig.ua.iPad
