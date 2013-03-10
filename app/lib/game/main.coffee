@@ -23,6 +23,8 @@ ig.module("game.main").requires(
 			score: 0
 		currentLevel: 1
 
+		muffinSprite: new ig.Image('img/ui-muffin.png')
+
 		init: ->
 			@showStats = no
 			# Add support for simple events on the global ig.game obj.
@@ -92,16 +94,12 @@ ig.module("game.main").requires(
 			else
 				@parent()  
 
-		drawStats: ->
-			x = ig.system.width/2
-			y = 20
-			leftAlignedX = 30
+		drawHUD: ->
+			return unless @stats.attempts
 
-			@statText.draw('Total Score: '+@stats.score, ig.system.width-30, y, ig.Font.ALIGN.RIGHT)
-			@statText.draw('Level ' + @currentLevel, leftAlignedX, y, ig.Font.ALIGN.LEFT)
-			@statText.draw('Toppings Collected: '+@stats.blueberriesCollected, leftAlignedX, y+=40, ig.Font.ALIGN.LEFT)
-			@statText.draw('Attempts: '+@stats.attempts, leftAlignedX, y+=40, ig.Font.ALIGN.LEFT)
-			@statText.draw "Baskets: #{@stats.baskets}/#{@stats.totalAttempts}", leftAlignedX, y+=40, ig.Font.ALIGN.LEFT
+			for i in [1..@stats.attempts]
+				@muffinSprite.draw ((@muffinSprite.width + 2) * i), 25
+
 
 		draw: ->
 			# Draw all entities and BackgroundMaps
@@ -126,7 +124,7 @@ ig.module("game.main").requires(
 			else
 				@bg?.draw(0,0)
 				@parent()
-				@drawStats()
+				@drawHUD()
 			
 		statText: new ig.Font( 'img/hud-font.png' )
 		levelTimer: new ig.Timer()
