@@ -247,14 +247,14 @@ ig.module("game.main").requires(
 			ig.music.volume = 0.5
 			ig.music.play()
 
-			score = _.reduce (_.map @getAllMedals(false), (m) => @points[m]), ((memo, num) -> memo + num), 0
-			@saveScore score
+			@score = _.reduce (_.map @getAllMedals(false), (m) => @points[m]), ((memo, num) -> memo + num), 0
+			@saveScore()
 
 			@getTopScores()
 
 		saveScore: (score) ->
-			GAMESAPI.postScore score, ->
-				console.log 'posted score', score
+			GAMESAPI.postScore @score, ->
+				console.log 'posted score', @score
 
 		getTopScores: ->
 			GAMESAPI.getLeaders GAMESAPI.DATA.ALLTIME, (resp) =>
@@ -295,7 +295,7 @@ ig.module("game.main").requires(
 			@bg.draw(0,0)
 			x = ig.system.width/2
 			y = ig.system.height/2
-			@instructText.draw( 'You Won!', x, y-y/2, ig.Font.ALIGN.CENTER)
+			@instructText.draw( "You Won! Your Score: #{@score}", x, y-y/2, ig.Font.ALIGN.CENTER)
 
 			medals = @getAllMedals()
 			x = 0
@@ -314,9 +314,10 @@ ig.module("game.main").requires(
 			x = 400
 			@instructText.draw( 'Press Spacebar to Start Again', x, y+y/2, ig.Font.ALIGN.CENTER)
 			@instructText.draw( "Muffin Quest High Scores ", x, y, ig.Font.ALIGN.CENTER)
-			for score in @scores
-				y += 25
+			y += 50
+			for score in @scores	
 				@instructText.draw( "#{score.name}    -      #{score.score}", x, y, ig.Font.ALIGN.CENTER)
+				y += 25
 				
 
 	)
