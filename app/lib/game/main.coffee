@@ -46,12 +46,12 @@ ig.module("game.main").requires(
 			ig.game.on 'collect', ->
 				@stats.blueberriesCollected += 1
 
-			@currentLevel = 1
+			@currentLevel = 2
 
 		loadLevel: (data) ->
-			console.log data
-			@currentLevel = @currentLevel+1
 			@parent data
+
+			++@currentLevel
 
 			@stats.blueberriesCollected = 0
 			@stats.attempts = 3
