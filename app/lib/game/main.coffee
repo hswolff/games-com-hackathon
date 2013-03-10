@@ -39,6 +39,9 @@ ig.module("game.main").requires(
 			@setBackground()
 			@loadLevel LevelOne
 
+			ig.game.on 'collect', ->
+				@stats['sprinklesCollected'] += 1
+
 		loadLevel: (data) ->
 			@parent data
 			i = 0

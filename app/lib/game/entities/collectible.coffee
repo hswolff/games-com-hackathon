@@ -32,8 +32,7 @@ ig.module(
 			return if @collected
 			@collected = yes
 			collectibleSoundManager.add()
-			# @TODO: Somehow fire an event here that
-			# updates global/user state.
+			ig.game.trigger 'collect', @
 
 		update: ->
 			if @collected 
