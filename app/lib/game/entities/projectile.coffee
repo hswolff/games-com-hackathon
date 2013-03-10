@@ -24,7 +24,12 @@ ig.module(
       @addAnim "idle", 1, [0]
       @currentAnim.flip.x = settings.flip
       @soundManager = new ProjectileSoundManager
+      @body.AllowSleeping true
       return
+
+    update: ->
+      @kill() if @body.IsSleeping() is true
+      @parent()
 
     collideTile: ->
       @soundManager.add()
