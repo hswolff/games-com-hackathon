@@ -20,7 +20,7 @@ ig.module("game.main").requires(
 	window.audiolet = new Audiolet
 	
 	MyGame = ig.Box2DGame.extend(
-		gravity: 500 # All entities are affected by this
+		gravity: 980 # All entities are affected by this
 
 		# Load a font
 		font: new ig.Font("img/hud-font.png")

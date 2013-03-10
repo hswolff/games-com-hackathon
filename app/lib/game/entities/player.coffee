@@ -69,6 +69,7 @@ ig.module(
 			borderSize = 16
 			powerWidth = 30
 
+			powerMultiplyer = 2
 			# power outline
 			ig.system.context.fillStyle = "rgb(0,0,0)"
 			ig.system.context.beginPath()
@@ -76,7 +77,7 @@ ig.module(
 			                borderSize, 
 			                ig.system.realHeight-borderSize, 
 			                powerWidth, 
-			                -@maxPower
+			                -@maxPower * powerMultiplyer
 			            )
 			ig.system.context.closePath()
 			ig.system.context.stroke()
@@ -89,7 +90,7 @@ ig.module(
 				                borderSize, 
 				                ig.system.realHeight-borderSize, 
 				                powerWidth, 
-				                -@currentPower
+				                -@currentPower * powerMultiplyer
 				            )
 				ig.system.context.closePath()
 				ig.system.context.fill()
