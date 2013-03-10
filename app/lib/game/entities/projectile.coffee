@@ -29,7 +29,6 @@ ig.module(
       @parent()
 
     kill: ->
-      console.log 'kill'
       baskets = ig.game.getEntitiesByType(EntityBasket)
       for basket in baskets
         if @touches(basket)
