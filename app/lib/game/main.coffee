@@ -54,14 +54,14 @@ ig.module("game.main").requires(
 
 		setBackground: (path) ->
 			@clearColor = null
-			@bg = new ig.Image('img/BACKGROUND.png', 800, 640)
+			@bg = new ig.Image('img/bg.png', 800, 640)
 
 		update: ->
 			@parent()
 
 		draw: ->
 			# Draw all entities and BackgroundMaps
-			@bg.draw(0,0)
+			@bg?.draw(0,0)
 			@parent()
 
 			x = ig.system.width/2
