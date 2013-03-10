@@ -27,6 +27,7 @@ ig.module("game.main").requires(
 		clearColor: "#1b2026"
 		stats:
 			score: 0
+		levelStats: []
 		currentLevel: 1
 
 		muffinSprite: new ig.Image('img/ui-muffin.png')
@@ -96,6 +97,12 @@ ig.module("game.main").requires(
 			@bg = new ig.Image('img/bg.png', 800, 640)
 
 		loadNextLevel: ->
+			@levelStats.push
+				baskets: @state.baskets
+				blueberriesCollected: @state.blueberriesCollected
+
+			console.log @levelStats
+
 			level = ig.global["Level#{++@currentLevel}"] 
 			if level
 				ig.game.loadLevelDeferred level
