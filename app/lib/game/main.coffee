@@ -37,7 +37,7 @@ ig.module("game.main").requires(
 				ig.input.bindTouch "#buttonJump", "jump"
 
 			@setBackground()
-			@loadLevel LevelBlake
+			@loadLevel LevelOne
 
 		loadLevel: (data) ->
 			@parent data
