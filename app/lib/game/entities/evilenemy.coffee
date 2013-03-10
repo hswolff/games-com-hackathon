@@ -29,6 +29,7 @@ ig.module(
 
 		update: -> @parent()
 
-		collideWith: (entity) -> entity.kill()
+		collideWith: (entity) -> entity.killed = true
+
 
 	return

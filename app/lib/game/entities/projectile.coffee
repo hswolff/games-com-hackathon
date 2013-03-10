@@ -25,8 +25,12 @@ ig.module(
       return
 
     update: ->
-      return @kill() if @body.IsSleeping()
+      return @kill() if @body.IsSleeping() or @killed
       @parent()
+
+    createBody: ->
+      @parent()
+      @body.m_angularDamping = 5
 
     kill: ->
       baskets = ig.game.getEntitiesByType(EntityBasket)

@@ -1,6 +1,6 @@
 ig.module("game.main").requires(
 	"impact.game",
-  'impact.debug.debug',
+	'impact.debug.debug',
 	"game.entities.player",
 	"game.entities.enemy",
 	"game.entities.crate",
@@ -13,7 +13,8 @@ ig.module("game.main").requires(
 	"game.levels.6",
 	"game.levels.7",
 	"game.levels.8",
-	"plugins.box2d.game"
+	"plugins.box2d.game",
+	"plugins.box2d.debug"
 ).defines ->
 
 	window.audiolet = new Audiolet
@@ -50,6 +51,7 @@ ig.module("game.main").requires(
 				ig.input.bindTouch "#buttonJump", "jump"
 
 			b2.SCALE = 0.025
+
 			
 			@setBackground()
 
@@ -68,6 +70,7 @@ ig.module("game.main").requires(
 							
 		loadLevel: (data) ->
 			@parent data
+			@debugDrawer = new ig.Box2DDebug( ig.world )
 
 			# reset stats
 			@stats.blueberriesCollected = 0
@@ -130,6 +133,9 @@ ig.module("game.main").requires(
 				@bg?.draw(0,0)
 				@parent()
 				@drawHUD()
+
+				# @debugDrawer.draw()
+
 			
 		statText: new ig.Font( 'img/hud-font.png' )
 		levelTimer: new ig.Timer()
