@@ -44,12 +44,12 @@ ig.module("game.main").requires(
 			@loadLevel LevelOne
 
 			ig.game.on 'collect', ->
-				@stats.sprinklesCollected += 1
+				@stats.blueberriesCollected += 1
 
 		loadLevel: (data) ->
 			@parent data
 
-			@stats.sprinklesCollected = 0
+			@stats.blueberriesCollected = 0
 			@stats.attempts = 3
 
 			i = 0
@@ -74,7 +74,7 @@ ig.module("game.main").requires(
 			y = 20
 			leftAlignedX = 30
 			this.statText.draw('Total Score: '+this.stats.totalPoints, ig.system.width-30, y, ig.Font.ALIGN.RIGHT)
-			this.statText.draw('Sprinkles Collected: '+this.stats.sprinklesCollected, leftAlignedX, y, ig.Font.ALIGN.LEFT)
+			this.statText.draw('Blueberries Collected: '+this.stats.blueberriesCollected, leftAlignedX, y, ig.Font.ALIGN.LEFT)
 			this.statText.draw('Attempts: '+this.stats.attempts, leftAlignedX, y+40, ig.Font.ALIGN.LEFT)
 
 		statText: new ig.Font( 'img/hud-font.png' )
