@@ -38,37 +38,37 @@ ig.module(
 			else 
 				@currentAnim = @anims.idle
 
-  class CollectibleSound extends AudioletGroup
+	class CollectibleSound extends AudioletGroup
 
-    constructor: (audiolet, frequency) ->
-      super audiolet, 0, 1
+		constructor: (audiolet, frequency) ->
+			super audiolet, 0, 1
 
-      # create core audio
-      @sine = new Triangle(audiolet, frequency)
-      @gain = new Gain(audiolet)
-      @vol = new Gain(audiolet, 0.5)
-      
-      # create envelope
-      @gainEnv = new PercussiveEnvelope(audiolet, 0, 0.1, 0.15, => @remove())
-      @gainEnv.connect(@gain, 0, 1)
+			# create core audio
+			@sine = new Triangle(audiolet, frequency)
+			@gain = new Gain(audiolet)
+			@vol = new Gain(audiolet, 0.5)
 
-      # route core audio
-      @sine.connect(@gain)
-      @gain.connect(@vol)
-      @vol.connect(@outputs[0])
+			# create envelope
+			@gainEnv = new PercussiveEnvelope(audiolet, 0, 0.1, 0.15, => @remove())
+			@gainEnv.connect(@gain, 0, 1)
 
-  class CollectibleSoundManager
+			# route core audio
+			@sine.connect(@gain)
+			@gain.connect(@vol)
+			@vol.connect(@outputs[0])
 
-    # d3, f3, g3, a3, g3, f3. like the bass
-    constructor: ->
-      @scale = [136.8, 174.6, 196, 220]
-      @index = 3
+	class CollectibleSoundManager
 
-    add: _.throttle(->
-      freq = @scale[@index--]
-      sound = new CollectibleSound(window.audiolet, freq)
-      sound.connect(window.audiolet.output)
-      @index = 3 if not @scale[@index]
-    , 200)
+		# d3, f3, g3, a3, g3, f3. like the bass
+		constructor: ->
+			@scale = [136.8, 174.6, 196, 220]
+			@index = 3
 
-  soundManager = new CollectibleSoundManager
+		add: _.throttle(->
+			freq = @scale[@index--]
+			sound = new CollectibleSound(window.audiolet, freq)
+			sound.connect(window.audiolet.output)
+			@index = 3 if not @scale[@index]
+		, 200)
+
+	soundManager = new CollectibleSoundManager
