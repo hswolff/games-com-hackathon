@@ -1,9 +1,9 @@
 ig.module(
-	"game.entities.exit"
+	"game.entities.basket"
 ).requires(
 	"impact.entity"
 ).defines ->
-	window.EntityExit = ig.Entity.extend
+	window.EntityBasket = ig.Entity.extend
 		type: ig.Entity.TYPE.A
 		animSheet: new ig.AnimationSheet("img/basket.png", 128, 128)
 		size: 
