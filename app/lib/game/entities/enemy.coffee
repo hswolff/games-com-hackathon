@@ -23,7 +23,7 @@ ig.module(
 			@parent x, y, settings
 
 			# Add the animations
-			@addAnim 'idle', 1, [0] 
+			@addAnim 'idle', 0.1, [0,1,2,3,2,1] 
 
 			@currentAnim.flip.x = yes
 
