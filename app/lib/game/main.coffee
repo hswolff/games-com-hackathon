@@ -36,6 +36,9 @@ ig.module("game.main").requires(
 			silver: new ig.Image('img/medal-silver.png')
 			gold: new ig.Image('img/medal-gold.png')
 
+		basketSprite: new ig.Image("img/basket.png")
+		blueberrySprite: new ig.Image("img/blueberry.png")
+
 		init: ->
 			@showStats = no
 			# Add support for simple events on the global ig.game obj.
@@ -56,7 +59,6 @@ ig.module("game.main").requires(
 				ig.input.bindTouch "#buttonJump", "jump"
 
 			b2.SCALE = 0.025
-
 			
 			@setBackground()
 
@@ -108,7 +110,7 @@ ig.module("game.main").requires(
 				@parent()  
 
 		drawHUD: ->
-			@statText.draw("Level #{@currentLevel}", 25, 25, ig.Font.ALIGN.LEFT)
+			@font.draw("Level #{@currentLevel}", 25, 25, ig.Font.ALIGN.LEFT)
 			
 			return unless @stats.attempts
 
@@ -133,31 +135,40 @@ ig.module("game.main").requires(
 				bg.draw(0,0)
 				# ig.system.context.fillStyle = "rgba(255,255,255, 0.5)"
 				# ig.system.context.fillRect( 0, 0, ig.system.realWidth, ig.system.realHeight )
-
-				x = ig.system.width/2
+				centerX = ig.system.width/2
 				y = 175
-
+				
 				if @continue
-					@statText.draw("Level #{@currentLevel} Complete", x, y, ig.Font.ALIGN.CENTER)
-					@statText.draw("Baskets: #{@stats.baskets}/3 ", x, y + 50, ig.Font.ALIGN.CENTER)
-					@statText.draw("Blueberries: #{@stats.blueberriesCollected}/3 ", x, y + 80, ig.Font.ALIGN.CENTER)
-					@getMedal().draw 325, 50
+					medalY = 25
+					medal = @getMedal()
+					medal.draw centerX-medal.width/2, medalY
 
-					@statText.draw('Press N to continue.', x, ig.system.height - 80, ig.Font.ALIGN.CENTER)
+					levelFontY = medalY + medal.height + 10
+					@font.draw("Level #{@currentLevel} Complete", centerX, levelFontY, ig.Font.ALIGN.CENTER)
+
+					basketFontY = levelFontY + @font.height + 20
+					@font.draw("Baskets", centerX, basketFontY, ig.Font.ALIGN.CENTER)
+					basketSpriteY = basketFontY + @font.height/1.5
+					for i in [1..@stats.baskets]
+						@basketSprite.draw ((@basketSprite.width + 2) * i) + 80, basketSpriteY
+
+					blueberryFontY = basketSpriteY + @basketSprite.height + 20
+					@font.draw("Blueberries", centerX, blueberryFontY, ig.Font.ALIGN.CENTER)
+					blueberryImageY = blueberryFontY + @font.height
+					for i in [1..@stats.blueberriesCollected]
+						@blueberrySprite.draw ((@blueberrySprite.width + 20) * i) + 285, blueberryImageY
+
+					@font.draw('Press N to continue.', centerX, ig.system.height - 80, ig.Font.ALIGN.CENTER)
 				else
-					@statText.draw('Level Failed', x, y, ig.Font.ALIGN.CENTER)
+					@font.draw('Level Failed', centerX, y, ig.Font.ALIGN.CENTER)
 
-				@statText.draw('Press R to retry.', x, ig.system.height - 120, ig.Font.ALIGN.CENTER)
+				@font.draw('Press R to retry.', centerX, ig.system.height - 120, ig.Font.ALIGN.CENTER)
 			else
 				@bg?.draw(0,0)
 				@parent()
 				@drawHUD()
 
 				# @debugDrawer.draw()
-
-			
-		statText: new ig.Font( 'img/hud-font.png' )
-		levelTimer: new ig.Timer()
 	)
 
 	StartScreen = ig.Game.extend(
