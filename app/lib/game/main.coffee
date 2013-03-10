@@ -24,9 +24,11 @@ ig.module("game.main").requires(
 		currentLevel: 1
 
 		init: ->
-			
+			@showStats = no
 			# Add support for simple events on the global ig.game obj.
 			MicroEvent.mixin(ig.game.constructor)
+
+			ig.input.bind( ig.KEY.SPACE, 'continue' )
 
 			# Bind keys
 			ig.input.bind ig.KEY.LEFT_ARROW, "left"
@@ -46,12 +48,10 @@ ig.module("game.main").requires(
 
 			@loadLevel window["Level#{@currentLevel}"]
 
-			ig.game.on 'collect', ->
-				@stats.blueberriesCollected += 1
+			ig.game.on 'collect', -> @stats.blueberriesCollected += 1
 
 
-			ig.game.on 'finishLevel', (stats) ->
-				alert JSON.stringify stats
+			ig.game.on 'finishLevel', (stats) -> @showStats = yes
 
 		loadLevel: (data) ->
 			@parent data
@@ -76,27 +76,46 @@ ig.module("game.main").requires(
 			ig.game.loadLevelDeferred ig.global["Level#{@currentLevel}"] 
 
 		update: ->
-			if(ig.input.pressed('nextlevel'))
-				@loadNextLevel()
-			if(ig.input.pressed('restart'))
-				@reloadLevel()
-			@parent()
+			if @showStats and (ig.input.pressed('restart') or ig.input.state('nextlevel'))
+
+				if ig.input.state('nextlevel')
+					@loadNextLevel()
+				else if ig.input.pressed('restart') 
+					@reloadLevel()
+				
+				@showStats = false
+				@parent()
+									
+			else
+				@parent()  
 
 		drawStats: ->
 			x = ig.system.width/2
 			y = 20
 			leftAlignedX = 30
-			this.statText.draw('Total Score: '+this.stats.score, ig.system.width-30, y, ig.Font.ALIGN.RIGHT)
-			this.statText.draw('Level ' + this.currentLevel, leftAlignedX, y, ig.Font.ALIGN.LEFT)
-			this.statText.draw('Toppings Collected: '+this.stats.blueberriesCollected, leftAlignedX, y+=40, ig.Font.ALIGN.LEFT)
-			this.statText.draw('Attempts: '+this.stats.attempts, leftAlignedX, y+=40, ig.Font.ALIGN.LEFT)
-			this.statText.draw "Baskets: #{@stats.baskets}/#{@stats.totalAttempts}", leftAlignedX, y+=40, ig.Font.ALIGN.LEFT
+
+			@statText.draw('Total Score: '+@stats.score, ig.system.width-30, y, ig.Font.ALIGN.RIGHT)
+			@statText.draw('Level ' + @currentLevel, leftAlignedX, y, ig.Font.ALIGN.LEFT)
+			@statText.draw('Toppings Collected: '+@stats.blueberriesCollected, leftAlignedX, y+=40, ig.Font.ALIGN.LEFT)
+			@statText.draw('Attempts: '+@stats.attempts, leftAlignedX, y+=40, ig.Font.ALIGN.LEFT)
+			@statText.draw "Baskets: #{@stats.baskets}/#{@stats.totalAttempts}", leftAlignedX, y+=40, ig.Font.ALIGN.LEFT
 
 		draw: ->
 			# Draw all entities and BackgroundMaps
-			@bg?.draw(0,0)
-			@parent()
-			@drawStats()
+			if @showStats
+				ig.system.context.fillStyle = "rgba(255,255,255, 0.5)"
+				ig.system.context.fillRect( 0, 0, ig.system.realWidth, ig.system.realHeight )
+
+				x = ig.system.width/2
+				y = ig.system.height/2 - 20
+
+				@statText.draw('Level Complete', x, y, ig.Font.ALIGN.CENTER)
+				@statText.draw('Press R to retry.', x, ig.system.height - 120, ig.Font.ALIGN.CENTER)
+				@statText.draw('Press N to continue.', x, ig.system.height - 80, ig.Font.ALIGN.CENTER)
+			else
+				@bg?.draw(0,0)
+				@parent()
+				@drawStats()
 
 			
 
