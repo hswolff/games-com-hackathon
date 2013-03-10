@@ -45,7 +45,7 @@ ig.module(
 			    this.currentAnim.angle += Math.PI/5 * ig.system.tick
 
 			# shoot
-			if ig.input.pressed("shoot")
+			if ig.input.pressed("shoot") and ig.game.stats.attempts > 0
 				if @fireInProgress
 					@fireInProgress = false
 					@fireProjectile()

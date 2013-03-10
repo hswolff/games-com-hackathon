@@ -25,7 +25,18 @@ ig.module(
       return
 
     update: ->
-      @kill() if @body.IsSleeping() is true
+      if @body.IsSleeping()
+        baskets = ig.game.getEntitiesByType(EntityBasket)
+        for basket in baskets
+          if @touches(basket)
+            ig.game.stats.baskets++
+
+        @kill() 
+
+        muffins = ig.game.getEntitiesByType(EntityProjectile)
+        if muffins.length is 0 and ig.game.stats.attempts is 0
+          ig.game.trigger('finishLevel', ig.game.stats)
+
       @parent()
 
     collideTile: ->

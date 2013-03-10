@@ -20,7 +20,7 @@ ig.module("game.main").requires(
 		font: new ig.Font("img/hud-font.png")
 		clearColor: "#1b2026"
 		stats:
-			totalPoints: 0
+			score: 0
 
 		init: ->
 			
@@ -48,19 +48,22 @@ ig.module("game.main").requires(
 
 			@currentLevel = 2
 
+			ig.game.on 'finishLevel', (stats) ->
+				alert JSON.stringify stats
+
 		loadLevel: (data) ->
 			@parent data
 
 			++@currentLevel
 
+			# reset stats
 			@stats.blueberriesCollected = 0
-			@stats.attempts = 3
+			@stats.totalAttempts = 3
+			@stats.attempts = @stats.totalAttempts
+			@stats.baskets = 0
 
-			i = 0
-
-			while i < @backgroundMaps.length
-				@backgroundMaps[i].preRender = true
-				i++
+			# pre render maps
+			map.preRender = true for map in @backgroundMaps
 
 		setBackground: (path) ->
 			@clearColor = null
@@ -79,9 +82,10 @@ ig.module("game.main").requires(
 			x = ig.system.width/2
 			y = 20
 			leftAlignedX = 30
-			this.statText.draw('Total Score: '+this.stats.totalPoints, ig.system.width-30, y, ig.Font.ALIGN.RIGHT)
-			this.statText.draw('Blueberries Collected: '+this.stats.blueberriesCollected, leftAlignedX, y, ig.Font.ALIGN.LEFT)
-			this.statText.draw('Attempts: '+this.stats.attempts, leftAlignedX, y+40, ig.Font.ALIGN.LEFT)
+			this.statText.draw('Total Score: '+this.stats.score, ig.system.width-30, y, ig.Font.ALIGN.RIGHT)
+			this.statText.draw('Toppings Collected: '+this.stats.blueberriesCollected, leftAlignedX, y, ig.Font.ALIGN.LEFT)
+			this.statText.draw('Attempts: '+this.stats.attempts, leftAlignedX, y+=40, ig.Font.ALIGN.LEFT)
+			this.statText.draw "Baskets: #{@stats.baskets}/#{@stats.totalAttempts}", leftAlignedX, y+=40, ig.Font.ALIGN.LEFT
 
 		statText: new ig.Font( 'img/hud-font.png' )
 		levelTimer: new ig.Timer()

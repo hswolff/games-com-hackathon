@@ -17,9 +17,5 @@ ig.module(
 		init: (x, y, settings) ->
 			@addAnim 'idle', 1, [0]
 			@parent x, y, settings
-
-		check: (other) ->
-			if other instanceof EntityProjectile and @level
-				ig.game.loadLevelDeferred ig.global["Level#{@level}"] 
 			
 
