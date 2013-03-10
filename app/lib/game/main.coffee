@@ -93,7 +93,11 @@ ig.module("game.main").requires(
 			@bg = new ig.Image('img/bg.png', 800, 640)
 
 		loadNextLevel: ->
-			ig.game.loadLevelDeferred ig.global["Level#{++@currentLevel}"] 
+			level = ig.global["Level#{++@currentLevel}"] 
+			if level
+				ig.game.loadLevelDeferred level
+			else
+				ig.system.setGame(EndScreen)
 
 		reloadLevel: ->
 			ig.game.loadLevelDeferred ig.global["Level#{@currentLevel}"] 
@@ -200,7 +204,37 @@ ig.module("game.main").requires(
 			@instructText.draw( 'Press Spacebar To Start', x+40, y-60, ig.Font.ALIGN.CENTER)
 
 			@instructText.draw( 'Arrow Keys to Aim', x+40, y-230, ig.Font.ALIGN.CENTER)
-			@instructText.draw( 'Space Bar to Launch Muffin', x+40, y-180, ig.Font.ALIGN.CENTER)
+			@instructText.draw( 'Spacebar to Launch Muffin', x+40, y-180, ig.Font.ALIGN.CENTER)
+
+	)
+
+	EndScreen = ig.Game.extend(
+		instructText: new ig.Font( 'img/herculanum-font.png' )
+		init: ->
+			ig.input.bind( ig.KEY.SPACE, 'start')
+			@setBackground()
+
+			ig.music.add('lib/game/music/muffin.ogg')
+
+			ig.music.volume = 0.5
+			ig.music.play()
+
+		update: ->
+			if(ig.input.pressed('start'))
+				ig.system.setGame(MyGame)
+			@parent()
+
+		setBackground: (path) ->
+			@clearColor = null
+			@bg = new ig.Image('img/BACKGROUND.png', 800, 640)
+
+		draw: ->
+			@parent()
+			@bg.draw(0,0)
+			x = ig.system.width/2
+			y = ig.system.height/2
+			@instructText.draw( 'You Won!', x, y-y/2, ig.Font.ALIGN.CENTER)
+			@instructText.draw( 'Press Spacebar to Start Again', x, y+y/2, ig.Font.ALIGN.CENTER)
 
 	)
 
