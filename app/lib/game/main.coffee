@@ -198,6 +198,10 @@ ig.module("game.main").requires(
 			y = ig.system.height
 			@instructText.draw( 'Welcome to', x-100, 30, ig.Font.ALIGN.CENTER)
 			@instructText.draw( 'Press Spacebar To Start', x+40, y-60, ig.Font.ALIGN.CENTER)
+
+			@instructText.draw( 'Arrow Keys to Aim', x+40, y-230, ig.Font.ALIGN.CENTER)
+			@instructText.draw( 'Space Bar to Launch Muffin', x+40, y-180, ig.Font.ALIGN.CENTER)
+
 	)
 
 	if ig.ua.iPad
