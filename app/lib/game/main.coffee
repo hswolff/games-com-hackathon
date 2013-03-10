@@ -87,7 +87,7 @@ ig.module("game.main").requires(
 			if ig.input.pressed('restart')
 				@reloadLevel()
 				@showStats = false
-			else if @showStats and @continue and ig.input.state('nextlevel')
+			else if @showStats and @continue and (ig.input.state('nextlevel') or ig.input.state('shoot'))
 				@loadNextLevel()
 				@showStats = false
 				@parent()						
