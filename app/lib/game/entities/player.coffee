@@ -7,12 +7,8 @@ ig.module(
 
 	window.EntityPlayer = ig.Entity.extend
 		size:
-			x: 8
-			y: 14
-
-		offset:
-			x: 4
-			y: 2
+			x: 128
+			y: 128
 
 		type: ig.Entity.TYPE.A
 		checkAgainst: ig.Entity.TYPE.NONE
