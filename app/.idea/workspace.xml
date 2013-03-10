@@ -2,13 +2,24 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="abb9abc6-4b87-4969-bb28-d68eade8c584" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/lib/game/levels/12.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/lib/game/levels/9.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/lib/game/main.coffee" afterPath="$PROJECT_DIR$/lib/game/main.coffee" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/lib/game/levels/1.js" afterPath="$PROJECT_DIR$/lib/game/levels/1.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/lib/game/levels/10.js" afterPath="$PROJECT_DIR$/lib/game/levels/10.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/lib/game/levels/11.js" afterPath="$PROJECT_DIR$/lib/game/levels/11.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/lib/game/levels/12.js" afterPath="$PROJECT_DIR$/lib/game/levels/12.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/lib/game/levels/2.js" afterPath="$PROJECT_DIR$/lib/game/levels/2.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/lib/game/levels/3.js" afterPath="$PROJECT_DIR$/lib/game/levels/3.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/lib/game/levels/4.js" afterPath="$PROJECT_DIR$/lib/game/levels/4.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/lib/game/levels/5.js" afterPath="$PROJECT_DIR$/lib/game/levels/5.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/lib/game/levels/6.js" afterPath="$PROJECT_DIR$/lib/game/levels/6.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/lib/game/levels/7.js" afterPath="$PROJECT_DIR$/lib/game/levels/7.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/lib/game/levels/8.js" afterPath="$PROJECT_DIR$/lib/game/levels/8.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/lib/game/levels/9.js" afterPath="$PROJECT_DIR$/lib/game/levels/9.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/index.html" afterPath="$PROJECT_DIR$/index.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/lib/game/levels/outline.js" afterPath="$PROJECT_DIR$/lib/game/levels/outline.js" />
     </list>
     <ignored path="app.iws" />
     <ignored path=".idea/workspace.xml" />
-    <file path="/Dummy.txt" changelist="abb9abc6-4b87-4969-bb28-d68eade8c584" time="1362927796197" ignored="false" />
+    <file path="/Dummy.txt" changelist="abb9abc6-4b87-4969-bb28-d68eade8c584" time="1362934186366" ignored="false" />
     <file path="/main.coffee" changelist="abb9abc6-4b87-4969-bb28-d68eade8c584" time="1362924545412" ignored="false" />
     <file path="/player.coffee" changelist="abb9abc6-4b87-4969-bb28-d68eade8c584" time="1362870464318" ignored="false" />
     <file path="/projectile.coffee" changelist="abb9abc6-4b87-4969-bb28-d68eade8c584" time="1362872682203" ignored="false" />
@@ -32,55 +43,118 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="player.coffee" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/lib/game/entities/player.coffee">
+      <file leaf-file-name="1.js" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/lib/game/levels/1.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="98" column="0" selection-start="2385" selection-end="2385" vertical-scroll-proportion="0.0">
+            <state line="4" column="45" selection-start="9251" selection-end="9251" vertical-scroll-proportion="1.331865">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="lib.js" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/lib/plugins/box2d/lib.js">
+      <file leaf-file-name="2.js" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/lib/game/levels/2.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="29" column="157" selection-start="2242" selection-end="2242" vertical-scroll-proportion="0.0">
+            <state line="4" column="45" selection-start="9664" selection-end="9664" vertical-scroll-proportion="-0.0">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="projectile.coffee" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/lib/game/entities/projectile.coffee">
+      <file leaf-file-name="3.js" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/lib/game/levels/3.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="93" column="0" selection-start="2078" selection-end="2078" vertical-scroll-proportion="0.0">
+            <state line="4" column="45" selection-start="9349" selection-end="9349" vertical-scroll-proportion="-0.0">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="main.coffee" pinned="false" current="true" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/lib/game/main.coffee">
+      <file leaf-file-name="4.js" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/lib/game/levels/4.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="19" column="19" selection-start="414" selection-end="414" vertical-scroll-proportion="0.40358743">
+            <state line="4" column="45" selection-start="9397" selection-end="9397" vertical-scroll-proportion="-0.0">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="basket.coffee" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/lib/game/entities/basket.coffee">
+      <file leaf-file-name="5.js" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/lib/game/levels/5.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="4" column="12" selection-start="76" selection-end="76" vertical-scroll-proportion="0.0">
+            <state line="4" column="45" selection-start="9384" selection-end="9384" vertical-scroll-proportion="-0.0">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="crate.coffee" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/lib/game/entities/crate.coffee">
+      <file leaf-file-name="6.js" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/lib/game/levels/6.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="7" column="10" selection-start="142" selection-end="142" vertical-scroll-proportion="0.0">
+            <state line="4" column="45" selection-start="9552" selection-end="9552" vertical-scroll-proportion="-0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="7.js" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/lib/game/levels/7.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="4" column="45" selection-start="9652" selection-end="9652" vertical-scroll-proportion="14.3529415">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="8.js" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/lib/game/levels/8.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="4" column="45" selection-start="9351" selection-end="9351" vertical-scroll-proportion="-0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="9.js" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/lib/game/levels/9.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="4" column="45" selection-start="9793" selection-end="9793" vertical-scroll-proportion="-0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="10.js" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/lib/game/levels/10.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="4" column="46" selection-start="9610" selection-end="9610" vertical-scroll-proportion="-0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="11.js" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/lib/game/levels/11.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="4" column="46" selection-start="10070" selection-end="10070" vertical-scroll-proportion="-0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="12.js" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/lib/game/levels/12.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="4" column="46" selection-start="10041" selection-end="10041" vertical-scroll-proportion="-0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="outline.js" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/lib/game/levels/outline.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="4" column="51" selection-start="9167" selection-end="9167" vertical-scroll-proportion="8.882353">
               <folding />
             </state>
           </provider>
@@ -108,10 +182,22 @@
   <component name="IdeDocumentHistory">
     <option name="changedFiles">
       <list>
-        <option value="$PROJECT_DIR$/lib/game/entities/player.coffee" />
-        <option value="$PROJECT_DIR$/lib/game/entities/projectile.coffee" />
         <option value="$PROJECT_DIR$/lib/game/entities/basket.coffee" />
         <option value="$PROJECT_DIR$/lib/game/main.coffee" />
+        <option value="$PROJECT_DIR$/index.html" />
+        <option value="$PROJECT_DIR$/lib/game/levels/outline.js" />
+        <option value="$PROJECT_DIR$/lib/game/levels/12.js" />
+        <option value="$PROJECT_DIR$/lib/game/levels/11.js" />
+        <option value="$PROJECT_DIR$/lib/game/levels/10.js" />
+        <option value="$PROJECT_DIR$/lib/game/levels/9.js" />
+        <option value="$PROJECT_DIR$/lib/game/levels/8.js" />
+        <option value="$PROJECT_DIR$/lib/game/levels/7.js" />
+        <option value="$PROJECT_DIR$/lib/game/levels/6.js" />
+        <option value="$PROJECT_DIR$/lib/game/levels/5.js" />
+        <option value="$PROJECT_DIR$/lib/game/levels/4.js" />
+        <option value="$PROJECT_DIR$/lib/game/levels/3.js" />
+        <option value="$PROJECT_DIR$/lib/game/levels/2.js" />
+        <option value="$PROJECT_DIR$/lib/game/levels/1.js" />
       </list>
     </option>
   </component>
@@ -146,7 +232,6 @@
       <sortByType />
     </navigator>
     <panes>
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -275,124 +360,13 @@
           </PATH>
         </subPane>
       </pane>
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="FullScreen" value="false" />
     <property name="GoToClass.includeJavaFiles" value="false" />
-  </component>
-  <component name="RestoreUpdateTree">
-    <UpdateInfo date="Moments ago" ActionInfo="_Update">
-      <UpdatedFiles>
-        <FILE-GROUP>
-          <option name="myUpdateName" value="Updated from server" />
-          <option name="myStatusName" value="Changed on server" />
-          <option name="mySupportsDeletion" value="false" />
-          <option name="myCanBeAbsent" value="false" />
-          <option name="myId" value="CHANGED_ON_SERVER" />
-          <FILE-GROUP>
-            <option name="myUpdateName" value="Updated" />
-            <option name="myStatusName" value="Changed" />
-            <option name="mySupportsDeletion" value="false" />
-            <option name="myCanBeAbsent" value="false" />
-            <option name="myId" value="UPDATED" />
-            <PATH vcs="Git" revision="">$PROJECT_DIR$/lib/game/main.coffee</PATH>
-          </FILE-GROUP>
-          <FILE-GROUP>
-            <option name="myUpdateName" value="Created" />
-            <option name="myStatusName" value="Created" />
-            <option name="mySupportsDeletion" value="false" />
-            <option name="myCanBeAbsent" value="false" />
-            <option name="myId" value="CREATED" />
-          </FILE-GROUP>
-          <FILE-GROUP>
-            <option name="myUpdateName" value="Deleted" />
-            <option name="myStatusName" value="Deleted" />
-            <option name="mySupportsDeletion" value="false" />
-            <option name="myCanBeAbsent" value="true" />
-            <option name="myId" value="REMOVED_FROM_REPOSITORY" />
-          </FILE-GROUP>
-          <FILE-GROUP>
-            <option name="myUpdateName" value="Restored" />
-            <option name="myStatusName" value="Will be restored" />
-            <option name="mySupportsDeletion" value="false" />
-            <option name="myCanBeAbsent" value="false" />
-            <option name="myId" value="RESTORED" />
-          </FILE-GROUP>
-        </FILE-GROUP>
-        <FILE-GROUP>
-          <option name="myUpdateName" value="Modified" />
-          <option name="myStatusName" value="Modified" />
-          <option name="mySupportsDeletion" value="false" />
-          <option name="myCanBeAbsent" value="false" />
-          <option name="myId" value="MODIFIED" />
-        </FILE-GROUP>
-        <FILE-GROUP>
-          <option name="myUpdateName" value="Skipped" />
-          <option name="myStatusName" value="Skipped" />
-          <option name="mySupportsDeletion" value="false" />
-          <option name="myCanBeAbsent" value="false" />
-          <option name="myId" value="SKIPPED" />
-        </FILE-GROUP>
-        <FILE-GROUP>
-          <option name="myUpdateName" value="Merged with conflicts" />
-          <option name="myStatusName" value="Will be merged with conflicts" />
-          <option name="mySupportsDeletion" value="false" />
-          <option name="myCanBeAbsent" value="false" />
-          <option name="myId" value="MERGED_WITH_CONFLICTS" />
-        </FILE-GROUP>
-        <FILE-GROUP>
-          <option name="myUpdateName" value="Merged with tree conflicts" />
-          <option name="myStatusName" value="Merged with tree conflicts" />
-          <option name="mySupportsDeletion" value="false" />
-          <option name="myCanBeAbsent" value="false" />
-          <option name="myId" value="MERGED_WITH_TREE_CONFLICT" />
-        </FILE-GROUP>
-        <FILE-GROUP>
-          <option name="myUpdateName" value="Merged with property conflicts" />
-          <option name="myStatusName" value="Will be merged with property conflicts" />
-          <option name="mySupportsDeletion" value="false" />
-          <option name="myCanBeAbsent" value="false" />
-          <option name="myId" value="MERGED_WITH_PROPERTY_CONFLICT" />
-        </FILE-GROUP>
-        <FILE-GROUP>
-          <option name="myUpdateName" value="Merged" />
-          <option name="myStatusName" value="Will be merged" />
-          <option name="mySupportsDeletion" value="false" />
-          <option name="myCanBeAbsent" value="false" />
-          <option name="myId" value="MERGED" />
-        </FILE-GROUP>
-        <FILE-GROUP>
-          <option name="myUpdateName" value="Not in repository" />
-          <option name="myStatusName" value="Not in repository" />
-          <option name="mySupportsDeletion" value="true" />
-          <option name="myCanBeAbsent" value="false" />
-          <option name="myId" value="UNKNOWN" />
-        </FILE-GROUP>
-        <FILE-GROUP>
-          <option name="myUpdateName" value="Locally added" />
-          <option name="myStatusName" value="Locally added" />
-          <option name="mySupportsDeletion" value="false" />
-          <option name="myCanBeAbsent" value="false" />
-          <option name="myId" value="LOCALLY_ADDED" />
-        </FILE-GROUP>
-        <FILE-GROUP>
-          <option name="myUpdateName" value="Locally removed" />
-          <option name="myStatusName" value="Locally removed" />
-          <option name="mySupportsDeletion" value="false" />
-          <option name="myCanBeAbsent" value="false" />
-          <option name="myId" value="LOCALLY_REMOVED" />
-        </FILE-GROUP>
-        <FILE-GROUP>
-          <option name="myUpdateName" value="Switched" />
-          <option name="myStatusName" value="Switched" />
-          <option name="mySupportsDeletion" value="false" />
-          <option name="myCanBeAbsent" value="false" />
-          <option name="myId" value="SWITCHED" />
-        </FILE-GROUP>
-      </UpdatedFiles>
-    </UpdateInfo>
   </component>
   <component name="RunManager">
     <configuration default="true" type="DartUnitRunConfigurationType" factoryName="DartUnit">
@@ -455,12 +429,12 @@
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.329602" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.18348624" sideWeight="0.6713555" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.18348624" sideWeight="0.6723684" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.3286445" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3276316" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
@@ -538,102 +512,112 @@
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/lib/plugins/box2d/lib.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="29" column="157" selection-start="2242" selection-end="2242" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/lib/game/entities/projectile.coffee">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="24" column="0" selection-start="579" selection-end="579" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/lib/game/main.coffee">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="29" column="19" selection-start="614" selection-end="614" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/lib/game/entities/basket.coffee">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="4" column="12" selection-start="76" selection-end="76" vertical-scroll-proportion="0.0">
+        <state line="29" column="157" selection-start="2242" selection-end="2242" vertical-scroll-proportion="0.24590164">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/lib/game/entities/crate.coffee">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="7" column="10" selection-start="142" selection-end="142" vertical-scroll-proportion="0.0">
+        <state line="7" column="10" selection-start="142" selection-end="142" vertical-scroll-proportion="0.19125684">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/lib/game/entities/crate.coffee">
+    <entry file="file://$PROJECT_DIR$/lib/game/levels/test.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="7" column="10" selection-start="142" selection-end="142" vertical-scroll-proportion="0.0">
+        <state line="3" column="876" selection-start="954" selection-end="955" vertical-scroll-proportion="0.24752475">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/lib/plugins/box2d/lib.js">
+    <entry file="file://$PROJECT_DIR$/lib/game/levels/outline.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="29" column="157" selection-start="2242" selection-end="2242" vertical-scroll-proportion="0.0">
+        <state line="4" column="51" selection-start="9167" selection-end="9167" vertical-scroll-proportion="8.882353">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/lib/plugins/box2d/debug.js">
+    <entry file="file://$PROJECT_DIR$/lib/game/levels/12.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/lib/game/entities/player.coffee">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="98" column="0" selection-start="2385" selection-end="2385" vertical-scroll-proportion="0.0">
+        <state line="4" column="46" selection-start="10041" selection-end="10041" vertical-scroll-proportion="-0.0">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/img/muffin.png">
-      <provider selected="true" editor-type-id="images">
-        <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/lib/impact/impact.js">
+    <entry file="file://$PROJECT_DIR$/lib/game/levels/11.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="10" column="27" selection-start="358" selection-end="358" vertical-scroll-proportion="-14.35567" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/lib/impact/game.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="218" column="8" selection-start="4587" selection-end="4587" vertical-scroll-proportion="0.5347938" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/lib/plugins/box2d/game.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="-1.7783505" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/lib/game/entities/basket.coffee">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="4" column="12" selection-start="76" selection-end="76" vertical-scroll-proportion="0.0">
+        <state line="4" column="46" selection-start="10070" selection-end="10070" vertical-scroll-proportion="-0.0">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/lib/game/entities/projectile.coffee">
+    <entry file="file://$PROJECT_DIR$/lib/game/levels/10.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="93" column="0" selection-start="2078" selection-end="2078" vertical-scroll-proportion="0.0">
+        <state line="4" column="46" selection-start="9610" selection-end="9610" vertical-scroll-proportion="-0.0">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/lib/game/main.coffee">
+    <entry file="file://$PROJECT_DIR$/lib/game/levels/9.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="19" column="19" selection-start="414" selection-end="414" vertical-scroll-proportion="0.40358743">
+        <state line="4" column="45" selection-start="9793" selection-end="9793" vertical-scroll-proportion="-0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/lib/game/levels/8.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="4" column="45" selection-start="9351" selection-end="9351" vertical-scroll-proportion="-0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/lib/game/levels/7.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="4" column="45" selection-start="9652" selection-end="9652" vertical-scroll-proportion="14.3529415">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/lib/game/levels/6.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="4" column="45" selection-start="9552" selection-end="9552" vertical-scroll-proportion="-0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/lib/game/levels/5.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="4" column="45" selection-start="9384" selection-end="9384" vertical-scroll-proportion="-0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/lib/game/levels/4.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="4" column="45" selection-start="9397" selection-end="9397" vertical-scroll-proportion="-0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/lib/game/levels/3.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="4" column="45" selection-start="9349" selection-end="9349" vertical-scroll-proportion="-0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/lib/game/levels/2.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="4" column="45" selection-start="9664" selection-end="9664" vertical-scroll-proportion="-0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/lib/game/levels/1.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="4" column="45" selection-start="9251" selection-end="9251" vertical-scroll-proportion="1.331865">
           <folding />
         </state>
       </provider>
