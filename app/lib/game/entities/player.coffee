@@ -40,7 +40,7 @@ ig.module(
 
 		update: ->
 			# shoot
-			if ig.input.pressed("shoot") and ig.game.stats.attempts > 0
+			if not ig.game.showStats and ig.input.pressed("shoot") and ig.game.stats.attempts > 0
 				@countingUp = true
 				if @fireInProgress
 					@fireInProgress = false

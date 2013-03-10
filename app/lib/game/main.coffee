@@ -102,8 +102,8 @@ ig.module("game.main").requires(
 				@showStats = false
 			else if @showStats and @continue and (ig.input.state('nextlevel') or ig.input.state('shoot'))
 				@loadNextLevel()
+				@parent()
 				@showStats = false
-				@parent()						
 			else
 				@parent()  
 
