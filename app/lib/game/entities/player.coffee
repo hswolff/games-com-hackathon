@@ -40,9 +40,9 @@ ig.module(
 
 			# move left or right
 			if ig.input.state("left")
-			    this.currentAnim.angle -= Math.PI/5 * ig.system.tick;
+			    this.currentAnim.angle -= Math.PI/5 * ig.system.tick
 			else if ig.input.state("right")
-			    this.currentAnim.angle += Math.PI/5 * ig.system.tick;
+			    this.currentAnim.angle += Math.PI/5 * ig.system.tick
 
 			# shoot
 			if ig.input.pressed("shoot")
