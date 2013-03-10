@@ -16,6 +16,8 @@ ig.module(
 		animSheet: new ig.AnimationSheet("img/bumper.png", 64, 64)
 		restitution: 1.1
 
+		bounceSound: new ig.Sound( 'lib/game/music/bumper.mp3' )
+
 		init: (x, y, settings) ->
 			@parent x, y, settings
 			@addAnim 'idle', 1, [0] 
@@ -32,5 +34,8 @@ ig.module(
 			shapeDef.restitution = @restitution
 
 			@body.CreateShape shapeDef
+
+		collideWith: ->
+			@bounceSound.play()
 
 	return

@@ -16,6 +16,10 @@ ig.module(
 
     animSheet: new ig.AnimationSheet("img/muffin.png", 64, 64)
 
+    deathSound: new ig.Sound( 'lib/game/music/pop.mp3' );
+    basketSound: new ig.Sound( 'lib/game/music/basket.mp3' );
+    bounceSound: new ig.Sound( 'lib/game/music/bounce.mp3' )
+
     init: (x, y, settings) ->
       @parent x, y, settings
       @addAnim "idle", 1, [0]
@@ -26,6 +30,9 @@ ig.module(
     update: ->
       return @kill() if @body.IsSleeping() or @killed
       @parent()
+
+    collideTile: ->
+      @bounceSound.play()
 
     createBody: ->
       @parent()
@@ -39,6 +46,7 @@ ig.module(
           basket.currentAnim = basket.anims.close.rewind()
           ig.game.stats.baskets++
           inBasket = true
+          @basketSound.play(); 
 
       @parent()
 
@@ -48,6 +56,7 @@ ig.module(
 
       unless inBasket
         ig.game.spawnEntity(EntityDeathExplosion, this.pos.x, this.pos.y )
+        @deathSound.play(); 
 
 
   window.EntityDeathExplosion = ig.Entity.extend(

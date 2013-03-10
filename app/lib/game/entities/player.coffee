@@ -23,6 +23,8 @@ ig.module(
 		maxPower: 100
 		fireTime: 2
 
+		shootSound: new ig.Sound( 'lib/game/music/cannon.mp3' )
+
 		init: (x, y, settings) ->
 			@parent x, y, settings
 
@@ -111,6 +113,8 @@ ig.module(
 			projectile.body.ApplyImpulse impulse, projectile.body.GetPosition()
 
 			ig.game.stats.attempts--
+
+			@shootSound.play()
 
 
 	return
