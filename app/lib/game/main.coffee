@@ -108,10 +108,12 @@ ig.module("game.main").requires(
 				@parent()  
 
 		drawHUD: ->
+			@statText.draw("Level #{@currentLevel}", 25, 25, ig.Font.ALIGN.LEFT)
+			
 			return unless @stats.attempts
 
 			for i in [1..@stats.attempts]
-				@muffinSprite.draw ((@muffinSprite.width + 2) * i), 25
+				@muffinSprite.draw ((@muffinSprite.width + 2) * i) + 115, 30
 
 		getMedal: ->
 			total = @stats.baskets + @stats.blueberriesCollected
