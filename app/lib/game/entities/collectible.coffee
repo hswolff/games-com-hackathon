@@ -17,11 +17,9 @@ ig.module(
 
 		#collides: ig.Entity.COLLIDES.NEVER
 
-		init: (x, y, settings) ->
-			@animSheet = do ->
-				color = ['red', 'orange', 'blue'][Math.floor(Math.random() * 3)]
-				new ig.AnimationSheet("img/sprinkle-#{color}.png", 16, 16)	
+		animSheet: new ig.AnimationSheet("img/blueberry.png", 32, 32)
 
+		init: (x, y, settings) ->
 			@addAnim "idle", 1, [0]
 			#@addAnim "collected", 1, [0]
 			
