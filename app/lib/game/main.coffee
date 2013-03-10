@@ -1,6 +1,6 @@
 ig.module("game.main").requires(
 	"impact.game",
-	'impact.debug.debug',
+	# 'impact.debug.debug',
 	"game.entities.player",
 	"game.entities.enemy",
 	"game.entities.crate",
@@ -17,8 +17,7 @@ ig.module("game.main").requires(
 	"game.levels.10",
 	"game.levels.11",
 	"game.levels.12",
-	"plugins.box2d.game",
-	"plugins.box2d.debug"
+	"plugins.box2d.game"
 ).defines ->
 
 	window.audiolet = new Audiolet
@@ -87,7 +86,7 @@ ig.module("game.main").requires(
 							
 		loadLevel: (data) ->
 			@parent data
-			@debugDrawer = new ig.Box2DDebug( ig.world )
+			# @debugDrawer = new ig.Box2DDebug( ig.world )
 
 			# reset stats
 			@stats.blueberriesCollected = 0
