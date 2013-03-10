@@ -33,25 +33,17 @@ ig.module(
 
 			@position = new ig.Timer()
 
-		distance: 15
 		duration: 0.86
-
-		updateCurrentPosition: ->
-			if @position.delta() > @duration
-				@position.reset()
-				@invertPosition = !@invertPosition
-			positionFromPower = (@distance*2) * (@position.delta()/@duration)
-			if @invertPosition
-				@currentPower = positionFromPower
-			else
-				@currentPower = (@distance*2) - positionFromPower
+		distance: 0.1
 
 		update: ->
 			@parent()
-			@updateCurrentPosition()
+			if @position.delta() > @duration
+				@position.reset()
+				@invertPosition = !@invertPosition
 			if not @invertPosition
-				@body.SetXForm(new b2.Vec2(@body.GetPosition().x, @body.GetPosition().y - 0.1), 0)
+				@body.SetXForm(new b2.Vec2(@body.GetPosition().x, @body.GetPosition().y - @distance), 0)
 			else
-				@body.SetXForm(new b2.Vec2(@body.GetPosition().x, @body.GetPosition().y + 0.1), 0)
+				@body.SetXForm(new b2.Vec2(@body.GetPosition().x, @body.GetPosition().y + @distance), 0)
 
 	return
