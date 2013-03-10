@@ -68,6 +68,9 @@ ig.module("game.main").requires(
 
 
 			ig.game.on 'finishLevel', @toggleStats
+
+			GAMESAPI.setGameSecret "k2jmc0g2t1r82rr16yvgjxz3c6"
+			GAMESAPI.beginGameSession()
 				
 
 		toggleStats: (stats) ->
