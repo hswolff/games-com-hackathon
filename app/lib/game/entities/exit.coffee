@@ -9,16 +9,16 @@ ig.module(
 		_wmBoxColor: 'rgba(0, 0, 255, 0.7)'
 
 		type: ig.Entity.TYPE.A
-
+		animSheet: new ig.AnimationSheet("img/basket.png", 128, 128)
 		size: 
-			x: 8
-			y: 16
+			x: 128
+			y: 128
 
 		level: null
 
 		checkAgainst: ig.Entity.TYPE.A 
 
-		update: ->
+		# update: ->
 
 		check: (other) ->
 			if other instanceof EntityProjectile and @level
