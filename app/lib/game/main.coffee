@@ -33,9 +33,11 @@ ig.module("game.main").requires(
 				ig.input.bindTouch "#buttonRight", "right"
 				ig.input.bindTouch "#buttonShoot", "shoot"
 				ig.input.bindTouch "#buttonJump", "jump"
+
 			
 			# Load the LevelTest as required above ('game.level.test')
 			# @loadLevel LevelTest
+			@setBackground()
 			@loadLevel LevelBlake
 
 		loadLevel: (data) ->
@@ -46,11 +48,16 @@ ig.module("game.main").requires(
 				@backgroundMaps[i].preRender = true
 				i++
 
+		setBackground: (path) ->
+			@clearColor = null
+			@bg = new ig.Image('img/BACKGROUND.png', 800, 640)
+
 		update: ->
 			@parent()
 
 		draw: ->
 			# Draw all entities and BackgroundMaps
+			@bg.draw(0,0)
 			@parent()
 			@font.draw "Arrow Keys, X, C", 2, 2  unless ig.ua.mobile
 	)
