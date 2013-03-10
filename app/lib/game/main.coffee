@@ -14,7 +14,7 @@ ig.module("game.main").requires(
 	"game.levels.7",
 	"game.levels.8",
 	"game.levels.9",
-#	"game.levels.10",
+	"game.levels.10",
 #	"game.levels.11",
 	"game.levels.12",
 	"plugins.box2d.game",
