@@ -177,6 +177,11 @@ ig.module("game.main").requires(
 			ig.input.bind( ig.KEY.SPACE, 'start')
 			@setBackground()
 
+			ig.music.add('lib/game/music/muffin.ogg')
+
+			ig.music.volume = 0.5
+			ig.music.play()
+
 		update: ->
 			if(ig.input.pressed('start'))
 				ig.system.setGame(MyGame)

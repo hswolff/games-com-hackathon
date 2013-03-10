@@ -20,7 +20,6 @@ ig.module(
       @parent x, y, settings
       @addAnim "idle", 1, [0]
       @currentAnim.flip.x = settings.flip
-      @soundManager = new ProjectileSoundManager
       @body.AllowSleeping true
       return
 
@@ -43,42 +42,5 @@ ig.module(
       muffins = ig.game.getEntitiesByType(EntityProjectile)
       if muffins.length is 0 and ig.game.stats.attempts is 0
         ig.game.trigger('finishLevel', ig.game.stats)
-
-
-    collideTile: ->
-      @soundManager.add()
-
-
-  class ProjectileSound extends AudioletGroup
-
-    constructor: (audiolet, frequency) ->
-      super audiolet, 0, 1
-
-      # create core audio
-      @sine = new Triangle(audiolet, frequency)
-      @gain = new Gain(audiolet)
-      
-      # create envelope
-      @gainEnv = new PercussiveEnvelope(audiolet, 0, 0.1, 0.15, => @remove())
-      @gainEnv.connect(@gain, 0, 1)
-
-      # route core audio
-      @sine.connect(@gain)
-      @gain.connect(@outputs[0])
-
-  class ProjectileSoundManager
-
-    constructor: ->
-      @audiolet = window.audiolet
-      @scale = new MajorScale()
-      @index = 16
-
-    add: _.throttle(->
-      return if not @index
-      degree = @index--
-      freq = @scale.getFrequency(degree, 2, 4)
-      sound = new ProjectileSound(@audiolet, freq)
-      sound.connect(@audiolet.output)
-    , 200)
   
   return

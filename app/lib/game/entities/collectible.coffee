@@ -22,14 +22,13 @@ ig.module(
 		init: (x, y, settings) ->
 			@addAnim "idle", 1, [0]
 			#@addAnim "collected", 1, [0]
-			
 			@parent x, y, settings	
 		
 
 		check: (other) ->
 			return if @collected
 			@collected = yes
-			collectibleSoundManager.add()
+			soundManager.add()
 			ig.game.trigger 'collect', @
 
 		update: ->
@@ -39,15 +38,15 @@ ig.module(
 			else 
 				@currentAnim = @anims.idle
 
-	class CollectibleSound extends AudioletGroup
+  class CollectibleSound extends AudioletGroup
 
     constructor: (audiolet, frequency) ->
       super audiolet, 0, 1
 
       # create core audio
-      @sine = new Saw(audiolet, frequency)
+      @sine = new Triangle(audiolet, frequency)
       @gain = new Gain(audiolet)
-      @vol = new Gain(audiolet, 0.2)
+      @vol = new Gain(audiolet, 0.5)
       
       # create envelope
       @gainEnv = new PercussiveEnvelope(audiolet, 0, 0.1, 0.15, => @remove())
@@ -60,16 +59,16 @@ ig.module(
 
   class CollectibleSoundManager
 
+    # d3, f3, g3, a3, g3, f3. like the bass
     constructor: ->
-      @scale = new MajorScale()
-      @index = 16
+      @scale = [136.8, 174.6, 196, 220]
+      @index = 3
 
     add: _.throttle(->
-      return if not @index
-      degree = @index--
-      freq = @scale.getFrequency(degree, 2, 4)
+      freq = @scale[@index--]
       sound = new CollectibleSound(window.audiolet, freq)
       sound.connect(window.audiolet.output)
+      @index = 3 if not @scale[@index]
     , 200)
 
-  collectibleSoundManager = new CollectibleSoundManager
+  soundManager = new CollectibleSoundManager
