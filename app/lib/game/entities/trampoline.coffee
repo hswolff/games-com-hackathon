@@ -14,18 +14,23 @@ ig.module(
 		collides: ig.Entity.COLLIDES.NEVER # Collision is already handled by Box2D!
 		static: true
 		animSheet: new ig.AnimationSheet("img/bumper.png", 64, 64)
+		restitution: 1.1
 
 		init: (x, y, settings) ->
 			@parent x, y, settings
-
-			# Add the animations
 			@addAnim 'idle', 1, [0] 
 
-		update: -> @parent()
+		createBody: ->
+			bodyDef = new b2.BodyDef()
+			bodyDef.position.Set (@pos.x + @size.x / 2) * b2.SCALE, (@pos.y + @size.y / 2) * b2.SCALE
 
-		collideWith: (entity) -> 
-			impulse = new b2.Vec2(Math.cos(-entity.currentAnim.angle), Math.sin(-entity.currentAnim.angle))
-			impulse.Multiply(75)
-			entity.body.ApplyImpulse impulse, entity.body.GetPosition()
+			@body = ig.world.CreateBody(bodyDef)
+
+			shapeDef = new b2.CircleDef()
+			shapeDef.radius = @size.x / 2 * b2.SCALE
+			shapeDef.density = 1
+			shapeDef.restitution = @restitution
+
+			@body.CreateShape shapeDef
 
 	return
