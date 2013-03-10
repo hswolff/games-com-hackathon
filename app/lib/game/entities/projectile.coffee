@@ -6,8 +6,12 @@ ig.module(
 
   window.EntityProjectile = ig.Box2DEntity.extend
     size:
-      x: 64
-      y: 64
+      x: 55
+      y: 55
+
+    offset:
+      x: 0
+      y: 5
 
     type: ig.Entity.TYPE.A
     checkAgainst: ig.Entity.TYPE.B
