@@ -55,6 +55,7 @@ ig.module("game.main").requires(
 				
 
 		toggleStats: (stats) ->
+			@stats = stats
 			@showStats = yes
 			@continue = stats.baskets > 0
 							
@@ -105,14 +106,18 @@ ig.module("game.main").requires(
 		draw: ->
 			# Draw all entities and BackgroundMaps
 			if @showStats
-				ig.system.context.fillStyle = "rgba(255,255,255, 0.5)"
-				ig.system.context.fillRect( 0, 0, ig.system.realWidth, ig.system.realHeight )
+				bg = new ig.Image('img/BACKGROUND.png', 800, 640)
+				bg.draw(0,0)
+				# ig.system.context.fillStyle = "rgba(255,255,255, 0.5)"
+				# ig.system.context.fillRect( 0, 0, ig.system.realWidth, ig.system.realHeight )
 
 				x = ig.system.width/2
-				y = ig.system.height/2 - 20
+				y = 80
 
 				if @continue
 					@statText.draw('Level Complete', x, y, ig.Font.ALIGN.CENTER)
+					@statText.draw("Baskets: #{@stats.baskets}/3 ", x, y + 50, ig.Font.ALIGN.CENTER)
+					@statText.draw("Blueberries: #{@stats.blueberriesCollected}/3 ", x, y + 80, ig.Font.ALIGN.CENTER)
 					@statText.draw('Press N to continue.', x, ig.system.height - 80, ig.Font.ALIGN.CENTER)
 				else
 					@statText.draw('Level Failed', x, y, ig.Font.ALIGN.CENTER)
