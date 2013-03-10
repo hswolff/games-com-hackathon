@@ -22,6 +22,9 @@ ig.module("game.main").requires(
 		clearColor: "#1b2026"
 		init: ->
 			
+			# Add support for simple events on the global ig.game obj.
+			MicroEvent.mixin(ig.game.constructor)
+
 			# Bind keys
 			ig.input.bind ig.KEY.LEFT_ARROW, "left"
 			ig.input.bind ig.KEY.RIGHT_ARROW, "right"
