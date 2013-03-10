@@ -21,6 +21,7 @@ ig.module("game.main").requires(
 		clearColor: "#1b2026"
 		stats:
 			score: 0
+		currentLevel: 1
 
 		init: ->
 			
@@ -32,6 +33,7 @@ ig.module("game.main").requires(
 			ig.input.bind ig.KEY.RIGHT_ARROW, "right"
 			ig.input.bind ig.KEY.SPACE, "shoot"
 			ig.input.bind ig.KEY.N, "nextlevel"
+			ig.input.bind ig.KEY.R, "restart"
 			if ig.ua.mobile
 				ig.input.bindTouch "#buttonLeft", "left"
 				ig.input.bindTouch "#buttonRight", "right"
@@ -41,20 +43,18 @@ ig.module("game.main").requires(
 			b2.SCALE = 0.025
 			
 			@setBackground()
-			@loadLevel Level1
+
+			@loadLevel window["Level#{@currentLevel}"]
 
 			ig.game.on 'collect', ->
 				@stats.blueberriesCollected += 1
 
-			@currentLevel = 2
 
 			ig.game.on 'finishLevel', (stats) ->
 				alert JSON.stringify stats
 
 		loadLevel: (data) ->
 			@parent data
-
-			++@currentLevel
 
 			# reset stats
 			@stats.blueberriesCollected = 0
@@ -71,6 +71,8 @@ ig.module("game.main").requires(
 
 		update: ->
 			if(ig.input.pressed('nextlevel'))
+				ig.game.loadLevelDeferred ig.global["Level#{++@currentLevel}"] 
+			if(ig.input.pressed('restart'))
 				ig.game.loadLevelDeferred ig.global["Level#{@currentLevel}"] 
 			@parent()
 
