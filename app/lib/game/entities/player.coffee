@@ -25,49 +25,59 @@ ig.module(
 		flip: false
 		gravityFactor: 0
 
+		fireInProgress: false
+		maxPower: 100
+		fireTime: 2
+
 		init: (x, y, settings) ->
 			@parent x, y, settings
 
 			# Add the animations
 			@addAnim "idle", 1, [0]
 
-			# @body.DestroyShape @body.GetShapeList()
-
 		update: ->
 
-			# move left or right
-			if ig.input.state("left")
-				# @body.ApplyForce new b2.Vec2(-20, 0), @body.GetPosition()
-			    this.currentAnim.angle -= Math.PI/5 * ig.system.tick;
-			else if ig.input.state("right")
-				# @body.ApplyForce new b2.Vec2(20, 0), @body.GetPosition()
-			    this.currentAnim.angle += Math.PI/5 * ig.system.tick;
+			if @fireInProgress
+				if @fireInProgress.delta() > @fireTime
+					@fireInProgress.reset()
+				@firePower = @maxPower * (@fireInProgress.delta()/@fireTime)
+			else
+				# move left or right
+				if ig.input.state("left")
+				    this.currentAnim.angle -= Math.PI/5 * ig.system.tick;
+				else if ig.input.state("right")
+				    this.currentAnim.angle += Math.PI/5 * ig.system.tick;
 
-			# @body.SetXForm @body.GetPosition(), this.angle
-
-			# window.body = @body
 
 			# shoot
 			if ig.input.pressed("shoot")
-				x = @pos.x
-				y = @pos.y
+				if @fireInProgress
+					@fireInProgress = false
+					@fireProjectile()
+				else
+					@fireInProgress = new ig.Timer()
+					@firePower = 0
 
-				velocity = 100
-				projectile = ig.game.spawnEntity EntityProjectile, x, y,
-					flip: @flip
-				impulse = new b2.Vec2(Math.cos(@currentAnim.angle), Math.sin(@currentAnim.angle))
-				# impulse = new b2.Vec2(-10,-10)
-				window.i = impulse
-				impulse.Normalize()
-				impulse.Multiply(velocity)
-				console.log impulse
-				projectile.body.ApplyImpulse impulse, projectile.body.GetPosition()
-				console.log projectile
 
-			# This sets the position and angle. We use the position the object
-			# currently has, but always set the angle to 0 so it does not rotate
-
-			# move!
 			@parent()
+
+		draw: ->
+			@parent()
+
+			if @fireInProgress
+				ig.game.font.draw "Power: #{@firePower}", 2, 20
+
+		fireProjectile: ->
+			x = @pos.x
+			y = @pos.y
+
+			velocity = @firePower
+			projectile = ig.game.spawnEntity EntityProjectile, x, y
+
+			# Apply impulse based on our angle
+			impulse = new b2.Vec2(Math.cos(@currentAnim.angle), Math.sin(@currentAnim.angle))
+			impulse.Normalize()
+			impulse.Multiply(velocity)
+			projectile.body.ApplyImpulse impulse, projectile.body.GetPosition()
 
 	return
