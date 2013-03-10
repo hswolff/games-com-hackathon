@@ -20,6 +20,9 @@ ig.module("game.main").requires(
 		# Load a font
 		font: new ig.Font("img/hud-font.png")
 		clearColor: "#1b2026"
+		stats:
+			totalPoints: 0
+
 		init: ->
 			
 			# Add support for simple events on the global ig.game obj.
@@ -28,8 +31,7 @@ ig.module("game.main").requires(
 			# Bind keys
 			ig.input.bind ig.KEY.LEFT_ARROW, "left"
 			ig.input.bind ig.KEY.RIGHT_ARROW, "right"
-			ig.input.bind ig.KEY.X, "jump"
-			ig.input.bind ig.KEY.C, "shoot"
+			ig.input.bind ig.KEY.SPACE, "shoot"
 			if ig.ua.mobile
 				ig.input.bindTouch "#buttonLeft", "left"
 				ig.input.bindTouch "#buttonRight", "right"
@@ -42,10 +44,14 @@ ig.module("game.main").requires(
 			@loadLevel LevelOne
 
 			ig.game.on 'collect', ->
-				@stats['sprinklesCollected'] += 1
+				@stats.sprinklesCollected += 1
 
 		loadLevel: (data) ->
 			@parent data
+
+			@stats.sprinklesCollected = 0
+			@stats.attempts = 3
+
 			i = 0
 
 			while i < @backgroundMaps.length
@@ -73,10 +79,6 @@ ig.module("game.main").requires(
 
 		statText: new ig.Font( 'img/hud-font.png' )
 		levelTimer: new ig.Timer()
-		stats:
-			totalPoints: 0
-			sprinklesCollected: 0
-			attempts: 0
 	)
 
 	StartScreen = ig.Game.extend(

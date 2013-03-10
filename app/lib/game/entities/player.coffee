@@ -63,8 +63,8 @@ ig.module(
 				ig.game.font.draw "Power: #{@firePower}", 120, ig.system.height-60
 
 		fireProjectile: ->
-			x = @pos.x
-			y = @pos.y
+			x = @pos.x + @size.x/2 - EntityProjectile::size.x/2
+			y = @pos.y + @size.y/2 - EntityProjectile::size.y/2
 
 			velocity = @firePower
 			projectile = ig.game.spawnEntity EntityProjectile, x, y
@@ -73,5 +73,8 @@ ig.module(
 			impulse = new b2.Vec2(Math.cos(@currentAnim.angle - Math.PI * 0.5), Math.sin(@currentAnim.angle - Math.PI * 0.5))
 			impulse.Multiply(velocity)
 			projectile.body.ApplyImpulse impulse, projectile.body.GetPosition()
+
+			ig.game.stats.attempts--
+
 
 	return
