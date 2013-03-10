@@ -40,6 +40,9 @@ ig.module("game.main").requires(
 		blueberrySprite: new ig.Image("img/blueberry.png")
 
 		init: ->
+			isDev = ~window.location.hostname.toLowerCase().indexOf('local')
+			if isDev and (level = window.location.search?.match(/^\?level\=([0-9])/))
+				@currentLevel = level[1]
 			@showStats = no
 			# Add support for simple events on the global ig.game obj.
 			MicroEvent.mixin(ig.game.constructor)
