@@ -27,7 +27,6 @@ ig.module("game.main").requires(
 		clearColor: "#1b2026"
 		stats:
 			score: 0
-		levelStats: []
 		currentLevel: 1
 
 		muffinSprite: new ig.Image('img/ui-muffin.png')
@@ -97,11 +96,9 @@ ig.module("game.main").requires(
 			@bg = new ig.Image('img/bg.png', 800, 640)
 
 		loadNextLevel: ->
-			@levelStats.push
-				baskets: @state.baskets
-				blueberriesCollected: @state.blueberriesCollected
-
-			console.log @levelStats
+			window.levelStats.push
+				baskets: @stats.baskets
+				blueberriesCollected: @stats.blueberriesCollected
 
 			level = ig.global["Level#{++@currentLevel}"] 
 			if level
@@ -131,8 +128,8 @@ ig.module("game.main").requires(
 			for i in [1..@stats.attempts]
 				@muffinSprite.draw ((@muffinSprite.width + 2) * i) + 115, 30
 
-		getMedal: ->
-			total = @stats.baskets + @stats.blueberriesCollected
+		getMedal: (stats) ->
+			total = stats.baskets + stats.blueberriesCollected
 			award = if total >= 6
 				'gold'
 			else if 3 <= total < 6
@@ -154,7 +151,7 @@ ig.module("game.main").requires(
 				
 				if @continue
 					medalY = 25
-					medal = @getMedal()
+					medal = @getMedal(@stats)
 					medal.draw centerX-medal.width/2, medalY
 
 					levelFontY = medalY + medal.height + 10
@@ -221,6 +218,12 @@ ig.module("game.main").requires(
 
 	EndScreen = ig.Game.extend(
 		instructText: new ig.Font( 'img/herculanum-font.png' )
+
+		medalSprites:
+			bronze: new ig.Image('img/medal-bronze.png')
+			silver: new ig.Image('img/medal-silver.png')
+			gold: new ig.Image('img/medal-gold.png')
+
 		init: ->
 			ig.input.bind( ig.KEY.SPACE, 'start')
 			@setBackground()
@@ -229,6 +232,20 @@ ig.module("game.main").requires(
 
 			ig.music.volume = 0.5
 			ig.music.play()
+
+
+		getMedal: (stats) ->
+			total = stats.baskets + stats.blueberriesCollected
+			award = if total >= 6
+				'gold'
+			else if 3 <= total < 6
+				'silver'
+			else 
+				'bronze'
+				
+			@medalSprites[award]
+		getAllMedals: ->
+			@getMedal(stat) for stat in window.levelStats
 
 		update: ->
 			if(ig.input.pressed('start'))
@@ -245,7 +262,19 @@ ig.module("game.main").requires(
 			x = ig.system.width/2
 			y = ig.system.height/2
 			@instructText.draw( 'You Won!', x, y-y/2, ig.Font.ALIGN.CENTER)
-			@instructText.draw( 'Press Spacebar to Start Again', x, y+y/2, ig.Font.ALIGN.CENTER)
+
+			medals = @getAllMedals()
+			x = 0
+			y = 240
+
+			for medal in medals
+				medal.draw x, y
+				x += medal.width
+				if x + medal.width > ig.system.width
+					x = 0
+					y += medal.height
+
+			@instructText.daw( 'Press Spacebar to Start Again', x, y+y/2, ig.Font.ALIGN.CENTER)
 
 	)
 
