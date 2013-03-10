@@ -5,7 +5,6 @@ ig.module("game.main").requires(
 	"game.entities.enemy",
 	"game.entities.crate",
 	"game.entities.collectible",
-	"game.levels.test",
 	"game.levels.one",
 	"game.levels.two",
 	"game.levels.three",
@@ -34,9 +33,6 @@ ig.module("game.main").requires(
 				ig.input.bindTouch "#buttonShoot", "shoot"
 				ig.input.bindTouch "#buttonJump", "jump"
 
-			
-			# Load the LevelTest as required above ('game.level.test')
-			# @loadLevel LevelTest
 			@setBackground()
 			@loadLevel LevelBlake
 
@@ -60,6 +56,19 @@ ig.module("game.main").requires(
 			@bg.draw(0,0)
 			@parent()
 			@font.draw "Arrow Keys, X, C", 2, 2  unless ig.ua.mobile
+
+			x = ig.system.width/2
+			y = 20
+			this.statText.draw('Total Score: '+this.stats.totalPoints, x, y, ig.Font.ALIGN.CENTER)
+			this.statText.draw('Sprinkles Collected: '+this.stats.sprinklesCollected, x, y+30, ig.Font.ALIGN.CENTER)
+			this.statText.draw('Attempts: '+this.stats.attempts, x, y+40, ig.Font.ALIGN.CENTER)
+
+		statText: new ig.Font( 'media/04b03.font.png' )
+		levelTimer: new ig.Timer()
+		stats:
+			totalPoints: 0
+			sprinklesCollected: 0
+			attempts: 0
 	)
 
 	StartScreen = ig.Game.extend(
