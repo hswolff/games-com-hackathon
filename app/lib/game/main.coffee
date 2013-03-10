@@ -136,7 +136,7 @@ ig.module("game.main").requires(
 				y = 175
 
 				if @continue
-					@statText.draw('Level Complete', x, y, ig.Font.ALIGN.CENTER)
+					@statText.draw("Level #{@currentLevel} Complete", x, y, ig.Font.ALIGN.CENTER)
 					@statText.draw("Baskets: #{@stats.baskets}/3 ", x, y + 50, ig.Font.ALIGN.CENTER)
 					@statText.draw("Blueberries: #{@stats.blueberriesCollected}/3 ", x, y + 80, ig.Font.ALIGN.CENTER)
 					@getMedal().draw 325, 50
