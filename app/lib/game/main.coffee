@@ -69,11 +69,17 @@ ig.module("game.main").requires(
 			@clearColor = null
 			@bg = new ig.Image('img/bg.png', 800, 640)
 
+		loadNextLevel: ->
+			ig.game.loadLevelDeferred ig.global["Level#{++@currentLevel}"] 
+
+		reloadLevel: ->
+			ig.game.loadLevelDeferred ig.global["Level#{@currentLevel}"] 
+
 		update: ->
 			if(ig.input.pressed('nextlevel'))
-				ig.game.loadLevelDeferred ig.global["Level#{++@currentLevel}"] 
+				@loadNextLevel()
 			if(ig.input.pressed('restart'))
-				ig.game.loadLevelDeferred ig.global["Level#{@currentLevel}"] 
+				@reloadLevel()
 			@parent()
 
 		drawStats: ->
