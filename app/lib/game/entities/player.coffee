@@ -41,12 +41,11 @@ ig.module(
 				if @fireInProgress.delta() > @fireTime
 					@fireInProgress.reset()
 				@firePower = @maxPower * (@fireInProgress.delta()/@fireTime)
-			else
-				# move left or right
-				if ig.input.state("left")
-				    this.currentAnim.angle -= Math.PI/5 * ig.system.tick;
-				else if ig.input.state("right")
-				    this.currentAnim.angle += Math.PI/5 * ig.system.tick;
+			# move left or right
+			if ig.input.state("left")
+			    this.currentAnim.angle -= Math.PI/5 * ig.system.tick;
+			else if ig.input.state("right")
+			    this.currentAnim.angle += Math.PI/5 * ig.system.tick;
 
 
 			# shoot
@@ -75,7 +74,8 @@ ig.module(
 			projectile = ig.game.spawnEntity EntityProjectile, x, y
 
 			# Apply impulse based on our angle
-			impulse = new b2.Vec2(Math.cos(@currentAnim.angle), Math.sin(@currentAnim.angle))
+			currentAngle = @currentAnim.angle - (Math.PI * .5)
+			impulse = new b2.Vec2(Math.cos(currentAngle), Math.sin(currentAngle))
 			impulse.Normalize()
 			impulse.Multiply(velocity)
 			projectile.body.ApplyImpulse impulse, projectile.body.GetPosition()
