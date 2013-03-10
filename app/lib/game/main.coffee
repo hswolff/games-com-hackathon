@@ -83,17 +83,23 @@ ig.module("game.main").requires(
 		instructText: new ig.Font( 'img/herculanum-font.png' )
 		init: ->
 			ig.input.bind( ig.KEY.SPACE, 'start')
+			@setBackground()
+
 		update: ->
 			if(ig.input.pressed('start'))
 				ig.system.setGame(MyGame)
 			@parent()
+
+		setBackground: (path) ->
+			@clearColor = null
+			@bg = new ig.Image('img/title.png', 800, 640)
+
 		draw: ->
 			@parent()
+			@bg.draw(0,0)
 			x = ig.system.width/2
 			y = ig.system.height
-			@instructText.draw( 'Welcome', x-100, 30, ig.Font.ALIGN.CENTER)
-			@instructText.draw( 'to', x-50, 170, ig.Font.ALIGN.CENTER)
-			@instructText.draw( 'MUFFIN QUEST', x, ig.system.height/2, ig.Font.ALIGN.CENTER)
+			@instructText.draw( 'Welcome to', x-100, 30, ig.Font.ALIGN.CENTER)
 			@instructText.draw( 'Press Spacebar To Start', x+40, y-60, ig.Font.ALIGN.CENTER)
 	)
 
