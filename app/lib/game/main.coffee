@@ -79,7 +79,7 @@ ig.module("game.main").requires(
 			y = 20
 			leftAlignedX = 30
 			this.statText.draw('Total Score: '+this.stats.score, ig.system.width-30, y, ig.Font.ALIGN.RIGHT)
-			this.statText.draw('Level  ' + this.currentLevel, leftAlignedX, y, ig.Font.ALIGN.LEFT)
+			this.statText.draw('Level ' + this.currentLevel, leftAlignedX, y, ig.Font.ALIGN.LEFT)
 			this.statText.draw('Toppings Collected: '+this.stats.blueberriesCollected, leftAlignedX, y+=40, ig.Font.ALIGN.LEFT)
 			this.statText.draw('Attempts: '+this.stats.attempts, leftAlignedX, y+=40, ig.Font.ALIGN.LEFT)
 			this.statText.draw "Baskets: #{@stats.baskets}/#{@stats.totalAttempts}", leftAlignedX, y+=40, ig.Font.ALIGN.LEFT
