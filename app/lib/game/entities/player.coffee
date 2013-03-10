@@ -64,7 +64,7 @@ ig.module(
 			@parent()
 
 			if @fireInProgress
-				ig.game.font.draw "Power: #{@firePower}", 2, 20
+				ig.game.font.draw "Power: #{@firePower}", 120, ig.system.height-60
 
 		fireProjectile: ->
 			x = @pos.x
