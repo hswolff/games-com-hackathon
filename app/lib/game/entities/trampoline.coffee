@@ -24,11 +24,8 @@ ig.module(
 		update: -> @parent()
 
 		collideWith: (entity) -> 
-			if @pos.x - entity.pos.x > 0
-				impulse = new b2.Vec2(Math.cos(-entity.currentAnim.angle), Math.sin(-entity.currentAnim.angle))
-				impulse.Multiply(100)
-				entity.body.ApplyImpulse impulse, entity.body.GetPosition()
-			else
-				entity.body.SetLinearVelocity new b2.Vec2(0, 0)
+			impulse = new b2.Vec2(Math.cos(-entity.currentAnim.angle), Math.sin(-entity.currentAnim.angle))
+			impulse.Multiply(75)
+			entity.body.ApplyImpulse impulse, entity.body.GetPosition()
 
 	return
