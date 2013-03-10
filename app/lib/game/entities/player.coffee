@@ -31,21 +31,17 @@ ig.module(
 			@anims.idle.pivot.y = 86
 
 
+		updateCurrentPower: ->
+			powerOfTimer = @maxPower * (@fireInProgress.delta()/@fireTime)
+			if @countingUp
+				@currentPower = powerOfTimer
+			else
+				@currentPower = @maxPower - powerOfTimer
+
 		update: ->
-
-			if @fireInProgress
-				if @fireInProgress.delta() > @fireTime
-					@fireInProgress.reset()
-				@firePower = @minPower + @maxPower * (@fireInProgress.delta()/@fireTime)
-
-			# move left or right
-			if ig.input.state("left")
-			    this.currentAnim.angle -= Math.PI/5 * ig.system.tick
-			else if ig.input.state("right")
-			    this.currentAnim.angle += Math.PI/5 * ig.system.tick
-
 			# shoot
 			if ig.input.pressed("shoot") and ig.game.stats.attempts > 0
+				@countingUp = true
 				if @fireInProgress
 					@fireInProgress = false
 					@fireProjectile()
@@ -53,14 +49,53 @@ ig.module(
 					@fireInProgress = new ig.Timer()
 					@firePower = 0
 
+			# update power
+			if @fireInProgress
+				if @fireInProgress.delta() > @fireTime
+					@fireInProgress.reset()
+					@countingUp = !@countingUp
+				@updateCurrentPower()
+				@firePower = @minPower + @currentPower
+
+			# move left or right
+			if ig.input.state("left")
+			    @currentAnim.angle -= Math.PI/5 * ig.system.tick
+			else if ig.input.state("right")
+			    @currentAnim.angle += Math.PI/5 * ig.system.tick
 
 			@parent()
 
 		draw: ->
-			@parent()
+			borderSize = 16
+			powerWidth = 30
+
+			# power outline
+			ig.system.context.fillStyle = "rgb(0,0,0)"
+			ig.system.context.beginPath()
+			ig.system.context.rect(
+			                borderSize, 
+			                ig.system.realHeight-borderSize, 
+			                powerWidth, 
+			                -@maxPower
+			            )
+			ig.system.context.closePath()
+			ig.system.context.stroke()
 
 			if @fireInProgress
-				ig.game.font.draw "Power: #{@firePower}", 120, ig.system.height-60
+				# power fill
+				ig.system.context.fillStyle = "rgb(255,0,0)"
+				ig.system.context.beginPath()
+				ig.system.context.rect(
+				                borderSize, 
+				                ig.system.realHeight-borderSize, 
+				                powerWidth, 
+				                -@currentPower
+				            )
+				ig.system.context.closePath()
+				ig.system.context.fill()
+
+			@parent()
+
 
 		fireProjectile: ->
 			x = @pos.x + @size.x/2 - EntityProjectile::size.x/2
