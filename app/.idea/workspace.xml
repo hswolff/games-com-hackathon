@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="abb9abc6-4b87-4969-bb28-d68eade8c584" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/lib/game/levels/6.js" afterPath="$PROJECT_DIR$/lib/game/levels/6.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/lib/game/levels/7.js" afterPath="$PROJECT_DIR$/lib/game/levels/7.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/lib/game/main.coffee" afterPath="$PROJECT_DIR$/lib/game/main.coffee" />
     </list>
     <ignored path="app.iws" />
@@ -66,7 +66,7 @@
       <file leaf-file-name="main.coffee" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/lib/game/main.coffee">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="29" column="0" selection-start="597" selection-end="597" vertical-scroll-proportion="0.29218107">
+            <state line="29" column="19" selection-start="614" selection-end="614" vertical-scroll-proportion="0.33333334">
               <folding />
             </state>
           </provider>
@@ -642,7 +642,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/lib/game/main.coffee">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="29" column="0" selection-start="597" selection-end="597" vertical-scroll-proportion="0.29218107">
+        <state line="29" column="19" selection-start="614" selection-end="614" vertical-scroll-proportion="0.33333334">
           <folding />
         </state>
       </provider>
