@@ -76,16 +76,13 @@ ig.module("game.main").requires(
 			ig.game.loadLevelDeferred ig.global["Level#{@currentLevel}"] 
 
 		update: ->
-			if @showStats and (ig.input.pressed('restart') or ig.input.state('nextlevel'))
-
-				if ig.input.state('nextlevel')
-					@loadNextLevel()
-				else if ig.input.pressed('restart') 
-					@reloadLevel()
-				
+			if ig.input.pressed('restart')
+				@reloadLevel()
 				@showStats = false
-				@parent()
-									
+			else if @showStats and ig.input.state('nextlevel')
+				@loadNextLevel()
+				@showStats = false
+				@parent()						
 			else
 				@parent()  
 
